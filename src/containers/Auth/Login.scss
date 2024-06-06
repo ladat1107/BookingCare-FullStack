@@ -1,0 +1,97 @@
+.login-background {
+    background: linear-gradient(135deg, #26bfc1, #f7bb30);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    /* Centers horizontally */
+    align-items: center;
+    /* Centers vertically */
+
+    .login-container {
+        width: 400px;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        /* Centers horizontally */
+        background: white;
+        border-radius: 15px;
+
+
+        .login-content {
+            padding: 15px;
+
+            .text-login {
+                text-align: center;
+                font-size: 24px;
+                font-weight: 600;
+                font-family: monospace;
+                margin: 10px 0;
+                padding-top: 25px;
+            }
+
+            .form-ma {
+                margin: 10px 0;
+
+                .custom-password {
+                    position: relative;
+                }
+
+                .icon {
+                    position: absolute;
+                    right: 10px;
+                    top: 10px;
+                }
+            }
+
+            .text-err {
+                color: red;
+            }
+
+            .btn-login {
+                width: 100%;
+                border: none;
+                outline: none;
+                margin: 15px 0;
+                border-radius: 30px;
+                height: 30px;
+                color: white;
+                font-size: 20px;
+                font-weight: 600;
+                font-family: monospace;
+                background: linear-gradient(135deg, #26bfc1, #f7bb30);
+            }
+
+            .forgot-pass {
+                font-size: 12px;
+                font-family: monospace;
+                font-style: italic;
+            }
+
+            .orlogin {
+                margin: 17px 0;
+                text-align: center;
+                font-size: 16px;
+                font-weight: 600;
+                font-family: monospace;
+            }
+
+            .image-login {
+                display: flex;
+                justify-content: center;
+                height: 80px;
+
+                .image-logo {
+                    margin: 0 10px;
+                    width: 50px;
+
+                    .logo {
+                        border-radius: 45px;
+                        width: 50px;
+                        height: 50px;
+                    }
+                }
+            }
+        }
+    }
+
+}
