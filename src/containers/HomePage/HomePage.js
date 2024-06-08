@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import HomePageHeader from './HomePageHeader';
+import Intro from './Session/Intro';
+import ForYou from './Session/ForYou';
+import FullService from './Session/FullService';
 class HomePage extends Component {
 
     constructor(props) {
@@ -19,6 +22,9 @@ class HomePage extends Component {
         return (
             <div>
                 <HomePageHeader />
+                <Intro />
+                <ForYou />
+                <FullService />
             </div>
         )
     }
