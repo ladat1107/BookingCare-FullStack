@@ -8,7 +8,7 @@ import { ToastContainer } from 'react-toastify';
 
 import { userIsAuthenticated, userIsNotAuthenticated } from '../hoc/authentication';
 
-import { path } from '../utils'
+import { languages, path } from '../utils'
 
 import Home from '../routes/Home';
 import Login from './Auth/Login';
@@ -17,6 +17,7 @@ import System from '../routes/System';
 
 import { CustomToastCloseButton } from '../components/CustomToast';
 import ConfirmModal from '../components/ConfirmModal';
+import HomePage from '../containers/HomePage/HomePage';
 
 class App extends Component {
 
@@ -51,6 +52,7 @@ class App extends Component {
                                 <Route path={path.HOME} exact component={(Home)} />
                                 <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} />
                                 <Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
+                                <Route path={path.HOMEPAGE} component={(HomePage)} />
                             </Switch>
                         </span>
 
@@ -70,7 +72,8 @@ class App extends Component {
 const mapStateToProps = state => {
     return {
         started: state.app.started,
-        isLoggedIn: state.user.isLoggedIn
+        isLoggedIn: state.user.isLoggedIn,
+        language: state.app.language,
     };
 };
 

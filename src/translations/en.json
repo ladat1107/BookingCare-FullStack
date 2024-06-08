@@ -1,4 +1,13 @@
 {
+    "homepage-header": {
+        "all": "All",
+        "house": "Home",
+        "hospital": "Hospital",
+        "healthy": "Health care",
+        "search": "Search a doctor",
+        "schedule": "Shedule",
+        "support": "Support"
+    },
     "common": {
         "add": "Add",
         "edit": "Edit",

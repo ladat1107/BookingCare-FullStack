@@ -1,4 +1,13 @@
 {
+    "homepage-header": {
+        "all": "Tất cả",
+        "house": "Tại nhà",
+        "hospital": "Tại viện",
+        "healthy": "Sống khỏe",
+        "search": "Tìm kiếm bác sĩ",
+        "schedule": "Lịch hẹn",
+        "support": "Hỗ trợ"
+    },
     "common": {
         "add": "Thêm",
         "edit": "Sửa",
