@@ -1,0 +1,46 @@
+.home-footer-container {
+    height: 78px;
+    width: 100%;
+    padding: 0 100px;
+    background-color: #64B9E5;
+    margin-top: 50px;
+
+
+    .home-footer-content {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        .footer-left {
+            width: 50%;
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            color: white;
+
+        }
+
+        .footer-right {
+            width: 50%;
+            display: flex;
+            justify-content: right;
+            gap: 20px;
+
+            .item {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                cursor: pointer;
+
+                i {
+                    font-size: 30px;
+                    color: rgb(247, 98, 98);
+                }
+            }
+        }
+    }
+
+
+}

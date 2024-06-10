@@ -36,7 +36,7 @@ class Intro extends Component {
                         infinite={true} // Lặp lại vô hạn
                         canSwipe={true} // Cho phép kéo (swipe)
                         indicators={true} // Hiển thị các chỉ số (dots)
-                        autoplay={false} // Tự động chuyển slide// Xử lý khi slide thay đổi
+                        autoplay={true} // Tự động chuyển slide// Xử lý khi slide thay đổi
                         pauseOnHover={true} // Tạm dừng khi rê chuột vào
                     >
                         {images.map((each, index) => (

@@ -5,6 +5,10 @@ import HomePageHeader from './HomePageHeader';
 import Intro from './Session/Intro';
 import ForYou from './Session/ForYou';
 import FullService from './Session/FullService';
+import Specialty from './Session/Specialty';
+import Facility from "./Session/Facility";
+import Media from './Session/Media';
+import HomePageFooter from './HomePageFooter';
 class HomePage extends Component {
 
     constructor(props) {
@@ -25,6 +29,10 @@ class HomePage extends Component {
                 <Intro />
                 <ForYou />
                 <FullService />
+                <Specialty />
+                <Facility />
+                <Media />
+                <HomePageFooter />
             </div>
         )
     }

@@ -7,6 +7,8 @@ import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 //import images from '../../../assets/headerHomePage/ForYou';
 
+import CircleText from "../../../components/HomePage/CircleText";
+
 class ForYou extends Component {
 
     constructor(props) {
@@ -29,6 +31,8 @@ class ForYou extends Component {
                         <span>Dành cho bạn</span>
                     </div>
                     <div className="down">
+                        <CircleText image={"../../assets/headerHomePage/csyt.png"}
+                            text={"Cơ sỡ y tế 0"} />
                         <div className='item'>
                             <div className='image'></div>
                             <div className='text'>Cơ sỡ y tế</div>

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
-import "./Specialty.scss";
+import "./Facility.scss";
 
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
-import images from '../../../assets/headerHomePage/thankinh.png';
+import images from '../../../assets/headerHomePage/viet-duc.jpg';
 
 import ItemSlider from "../../../components/HomePage/ItemSlider";
 
@@ -14,7 +14,7 @@ const properties = {
     nextArrow: <button className='custom'><i className="fa-solid fa-chevron-right icon"></i></button>
 }
 
-class Specialty extends Component {
+class Facility extends Component {
 
     constructor(props) {
         super(props);
@@ -31,10 +31,10 @@ class Specialty extends Component {
 
     render() {
         return (
-            <div className="specialty-container" >
-                <div className='specialty-content'>
+            <div className="facility-container" >
+                <div className='facility-content'>
                     <div className='up'>
-                        <div className='text'>Chuyên khoa</div>
+                        <div className='text'>Cơ sỡ y tế</div>
                         <div className='button'>Xem thêm</div>
                     </div>
                     <div className="down">
@@ -42,26 +42,27 @@ class Specialty extends Component {
                             slidesToScroll={2}
                             slidesToShow={3}
                             indicators={true}
+                            canSwipe={true}
                             {...properties}
                         >
                             <ItemSlider
                                 image={images}
-                                text={"Thần kinh"} />
+                                text={"Bệnh viện Việt Đức"} />
                             <ItemSlider
                                 image={images}
-                                text={"Thần kinh"} />
+                                text={"Bệnh viện Việt Đức"} />
                             <ItemSlider
                                 image={images}
-                                text={"Thần kinh"} />
+                                text={"Bệnh viện Việt Đức"} />
                             <ItemSlider
                                 image={images}
-                                text={"Thần kinh"} />
+                                text={"Bệnh viện Việt Đức"} />
                             <ItemSlider
                                 image={images}
-                                text={"Thần kinh"} />
+                                text={"Bệnh viện Việt Đức"} />
                             <ItemSlider
                                 image={images}
-                                text={"Thần kinh"} />
+                                text={"Bệnh viện Việt Đức"} />
 
 
                         </Slide>
@@ -87,4 +88,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Specialty);
+export default connect(mapStateToProps, mapDispatchToProps)(Facility);
