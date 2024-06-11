@@ -7,17 +7,53 @@
     background-color: $colormain;
     color: $common-text-color;
     height: 40px;
-    position: relative;
-    .btn-logout {
-        color: $common-text-color;
-        line-height: 40px;
-        height: 40px;
-        padding: 0 10px;
-        &:hover {
-            background-color: darken($colormain, 5);
+
+    .right {
+        display: flex;
+
+        .language {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-family: Montserrat;
+            font-size: 14px;
+            font-weight: 700;
+            margin-right: 50px;
+
+            .item {
+                .icon {
+                    font-size: 15px;
+                    color: #eb042f;
+                }
+
+                span {
+                    margin: 0 3px;
+                    color: #9cbabd;
+                    cursor: pointer;
+                }
+
+                .choose {
+                    color: #eb042f;
+                }
+            }
         }
-        i {
-            font-size: $base-size + 1px;
+
+        .btn-logout {
+            color: $common-text-color;
+            line-height: 40px;
+            height: 40px;
+            padding: 0 30px;
+
+            &:hover {
+                background-color: darken($colormain, 5);
+            }
+
+            i {
+                font-size: $base-size + 1px;
+            }
         }
     }
+
 }

@@ -162,11 +162,14 @@ class UserManage extends Component {
 
 const mapStateToProps = state => {
     return {
+        isLogin: state.app.isLogin,
+        language: state.app.language,
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
+
     };
 };
 

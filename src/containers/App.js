@@ -47,7 +47,7 @@ class App extends Component {
                     <CustomScrollbar >
                         <div className="main-container">
                             <ConfirmModal />
-                            {this.props.isLoggedIn && <Header />}
+                            {/* {this.props.isLoggedIn && <Header />} */}
 
                             <div className="content-container">
                                 <Switch>

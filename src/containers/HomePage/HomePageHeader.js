@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import "./HomePageHeader.scss";
-import { LANGUAGE } from "../../utils"
+import { LANGUAGE } from "../../utils";
 import { changeLanguageApp } from '../../store/actions';
 class HomePageHeader extends Component {
 

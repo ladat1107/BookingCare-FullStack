@@ -35,17 +35,18 @@
         "userpass-wrong": "Invalid username or password!"
     },
     "menu": {
-        "system": {
-            "header": "System",
-            "system-administrator": {
-                "header": "System Administrator",
-                "user-manage": "User manage",
-                "product-manage": "Package manage",
-                "register-package-group-or-account": "Register service package for group/account"
-            },
-            "system-parameter": {
-                "header": "System-parameter"
-            }
+        "admin": {
+            "manage": "Manage",
+            "crud-user": "User Manage",
+            "crud-user-redux": "User Manage redux",
+            "doctor": "Doctor manage",
+            "admin": "Admin manage",
+            "clinic": "Clinic",
+            "clinic-manage": "Clinic manage",
+            "specialty": "Specialty",
+            "specialty-manage": "Specialty manage",
+            "handbook": "Handbook",
+            "handbook-manage": "Handbook manage"
         }
     },
     "system": {
