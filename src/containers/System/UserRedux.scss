@@ -1,0 +1,22 @@
+.upload {
+    width: 100%;
+
+    label {
+        cursor: pointer;
+        font-size: 14px;
+        border-radius: 3px;
+        background-color: lightgray;
+        padding: 4px 6px;
+
+    }
+
+    .image {
+        margin-top: 10px;
+        width: 100%;
+        height: 150px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: left;
+
+    }
+}
