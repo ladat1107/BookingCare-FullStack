@@ -3,6 +3,8 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { Form, Row, Col, FormGroup, Input, Label, Button, FormFeedback } from "reactstrap";
 import { getAllCodeByType } from "../../services/userService";
+import * as action from "../../store/actions"
+import thunk from 'redux-thunk';
 class UserRedux extends Component {
 
     constructor(props) {
@@ -15,7 +17,8 @@ class UserRedux extends Component {
     }
 
     componentDidMount() {
-        this.getAllCode();
+        this.props.getGender();
+        //this.props.getPosition();
     }
     getAllCode = async () => {
         try {
@@ -45,6 +48,14 @@ class UserRedux extends Component {
             }
         } catch (e) {
             console(e);
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.gender !== prevProps.gender) {
+            this.setState({
+                gender: this.props.gender,
+            })
         }
     }
     render() {
@@ -254,11 +265,15 @@ class UserRedux extends Component {
 
 const mapStateToProps = state => {
     return {
+        language: state.app.language,
+        gender: state.admin.gender,
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
+        //  changeLanguageAppRedux: (language) => dispatch(changeLanguageApp(language)),
+        getGender: () => dispatch(action.getGenderStart()),
     };
 };
 
