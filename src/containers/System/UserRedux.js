@@ -6,7 +6,7 @@ import { getAllCodeByType } from "../../services/userService";
 import * as action from "../../store/actions"
 import thunk from 'redux-thunk';
 import "./UserRedux.scss";
-import { CRUD_ACTION } from "../../utils/constant"
+import { CRUD_ACTION, CommonUtils } from "../../utils"
 import { ToastContainer, toast } from 'react-toastify';
 
 class UserRedux extends Component {
@@ -18,6 +18,7 @@ class UserRedux extends Component {
             roleArr: [],
             genderArr: [],
             positionArr: [],
+            urlImage: "",
 
             id: "",
             email: "",
@@ -102,15 +103,25 @@ class UserRedux extends Component {
                 positionId: positionUpdate && positionUpdate.length > 0 ? positionUpdate[0].keyMap : "",
                 roleId: roleUpdate && roleUpdate.length > 0 ? roleUpdate[0].keyMap : "",
                 gender: genderUpdate && genderUpdate.length > 0 ? genderUpdate[0].keyMap : "",
+                urlImage: "",
+                image: "",
                 action: this.state.action === CRUD_ACTION.UPDATE ? CRUD_ACTION.CREATE : "",
             })
         }
     }
 
-    handleChangeImage = (event) => {
+    handleChangeImage = async (event) => {
         let data = event.target.files;
         let firstImage = data[0];
-        let urlImage = URL.createObjectURL(firstImage)
+        if (firstImage) {
+            let base64 = await CommonUtils.toBase64(firstImage);
+            let urlImage = URL.createObjectURL(firstImage)
+            this.setState({
+                urlImage: urlImage,
+                image: base64,
+            })
+        }
+
     }
     checkEmpty = () => {
         let arr = ["email", "password", "firstName", "lastName", "address", "phoneNumber"];
@@ -148,6 +159,7 @@ class UserRedux extends Component {
             }
             if (dataState.action === CRUD_ACTION.UPDATE) {
                 user.id = dataState.id;
+
                 this.props.updateUserRedux(user)
             } else {
                 this.props.createUserRedux(user)
@@ -156,6 +168,10 @@ class UserRedux extends Component {
         }
     }
     handleUpdateUser = (userUpdate) => {
+        let imageBase64 = "";
+        if (userUpdate.image) {
+            imageBase64 = new Buffer(userUpdate.image, "base64").toString("binary");
+        }
         this.setState({
             id: userUpdate.id,
             email: userUpdate.email,
@@ -168,8 +184,12 @@ class UserRedux extends Component {
             gender: userUpdate.gender,
             roleId: userUpdate.roleId,
             image: userUpdate.image,
+            urlImage: imageBase64,
             action: CRUD_ACTION.UPDATE,
+        }, () => {
+            console.log("check update: ", this.state)
         })
+
     }
     handleDeteleUser = (user) => {
         if (user && user.id) {
@@ -293,7 +313,7 @@ class UserRedux extends Component {
                                         id="exampleGender"
                                         name="gender"
                                         type="select"
-                                        value={data.gender}
+                                        value={data.gender ? data.gender : 0}
                                         onChange={(event) => { this.handleChangeInput(event, "gender") }}
                                     >{allGender && allGender.map((item, index) => {
                                         return (
@@ -317,7 +337,7 @@ class UserRedux extends Component {
                                             id="roleId"
                                             name="roleId"
                                             type="select"
-                                            value={data.roleId}
+                                            value={data.roleId ? data.roleId : 0}
                                             onChange={(event) => { this.handleChangeInput(event, "roleId") }}
                                         >
                                             {allRole && allRole.map((item, index) => {
@@ -343,7 +363,7 @@ class UserRedux extends Component {
                                             id="positionId"
                                             name="positionId"
                                             type="select"
-                                            value={data.positionId}
+                                            value={data.positionId ? data.positionId : 0}
                                             onChange={(event) => { this.handleChangeInput(event, "positionId") }}
                                         >
                                             {allPositon && allPositon.map((item, index) => {
@@ -379,7 +399,7 @@ class UserRedux extends Component {
                                             >
                                                 Tải ảnh
                                             </Label>
-                                            {data.image ? <div className='image' style={{ backgroundImage: `url(${data.image})` }}></div> : <div></div>}
+                                            {data.urlImage ? <div className='image' style={{ backgroundImage: `url(${data.urlImage})` }}></div> : <div></div>}
                                         </div>
 
                                     </Col>
