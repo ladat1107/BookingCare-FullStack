@@ -6,15 +6,20 @@ import { getAllCodeByType } from "../../services/userService";
 import * as action from "../../store/actions"
 import thunk from 'redux-thunk';
 import "./UserRedux.scss";
+import { CRUD_ACTION } from "../../utils/constant"
+import { ToastContainer, toast } from 'react-toastify';
+
 class UserRedux extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
+            allUser: [],
             roleArr: [],
             genderArr: [],
             positionArr: [],
 
+            id: "",
             email: "",
             password: "",
             firstName: "",
@@ -25,11 +30,12 @@ class UserRedux extends Component {
             gender: "",
             roleId: "",
             image: "",
-
+            action: "",
         }
     }
 
     componentDidMount() {
+        this.props.getAllUser();
         this.props.getGender();
         this.props.getPosition();
         this.props.getRole();
@@ -57,21 +63,50 @@ class UserRedux extends Component {
                 roleId: roleUpdate && roleUpdate.length > 0 ? roleUpdate[0].keyMap : "",
             })
         }
-        if (this.props.isCreateUser !== prevProps.isCreateUser && this.props.isCreateUser) {
-            alert(this.props.isCreateUser);
-            if (this.props.isCreateUser === "Create new user successfull") {
-                this.setState({
-                    email: "",
-                    password: "",
-                    firstName: "",
-                    lastName: "",
-                    address: "",
-                    phoneNumber: "",
-                })
+        if (this.props.allUser !== prevProps.allUser) {
+            this.setState({
+                allUser: this.props.allUser,
+            })
+        }
+        if (this.props.isDeleteUser !== prevProps.isDeleteUser && this.props.isDeleteUser === true) {
+            toast.success("Delete user successfull !", {
+                position: toast.POSITION.BOTTOM_CENTER
+            });
+        }
+        if ((this.props.isCreateUser === false || this.props.isUpdateUser === false) && this.props.errorMessage !== prevProps.errorMessage && this.props.errorMessage) {
+            toast.error(this.props.errorMessage, {
+                position: toast.POSITION.BOTTOM_CENTER
+            });
+        }
+        if ((this.props.isCreateUser !== prevProps.isCreateUser && this.props.isCreateUser === true ||
+            (this.props.isUpdateUser !== prevProps.isUpdateUser && this.props.isUpdateUser === true))) {
+            if (this.state.action === CRUD_ACTION.UPDATE) {
+                toast.success("Update user successfull !", {
+                    position: toast.POSITION.BOTTOM_CENTER
+                });
+            } else {
+                toast.success("Create user successfull !", {
+                    position: toast.POSITION.BOTTOM_CENTER
+                });
             }
-
+            let genderUpdate = this.props.genderArr;
+            let positionUpdate = this.props.positionArr;
+            let roleUpdate = this.props.roleArr;
+            this.setState({
+                email: "",
+                password: "",
+                firstName: "",
+                lastName: "",
+                address: "",
+                phoneNumber: "",
+                positionId: positionUpdate && positionUpdate.length > 0 ? positionUpdate[0].keyMap : "",
+                roleId: roleUpdate && roleUpdate.length > 0 ? roleUpdate[0].keyMap : "",
+                gender: genderUpdate && genderUpdate.length > 0 ? genderUpdate[0].keyMap : "",
+                action: this.state.action === CRUD_ACTION.UPDATE ? CRUD_ACTION.CREATE : "",
+            })
         }
     }
+
     handleChangeImage = (event) => {
         let data = event.target.files;
         let firstImage = data[0];
@@ -98,20 +133,47 @@ class UserRedux extends Component {
     handleSaveUser = () => {
         let isEmpty = this.checkEmpty();
         if (isEmpty === false) {
-            let user = this.state;
-            let userCreate = {
-                email: user.email,
-                password: user.password,
-                firstName: user.firstName,
-                lastName: user.lastName,
-                address: user.address,
-                phoneNumber: user.phoneNumber,
-                positionId: user.positionId,
-                gender: user.gender,
-                roleId: user.roleId,
-                image: user.image,
+            let dataState = this.state;
+            let user = {
+                email: dataState.email,
+                password: dataState.password,
+                firstName: dataState.firstName,
+                lastName: dataState.lastName,
+                address: dataState.address,
+                phoneNumber: dataState.phoneNumber,
+                positionId: dataState.positionId,
+                gender: dataState.gender,
+                roleId: dataState.roleId,
+                image: dataState.image,
             }
-            this.props.createUserRedux(userCreate)
+            if (dataState.action === CRUD_ACTION.UPDATE) {
+                user.id = dataState.id;
+                this.props.updateUserRedux(user)
+            } else {
+                this.props.createUserRedux(user)
+            }
+
+        }
+    }
+    handleUpdateUser = (userUpdate) => {
+        this.setState({
+            id: userUpdate.id,
+            email: userUpdate.email,
+            password: "HASH CODE",
+            firstName: userUpdate.firstName,
+            lastName: userUpdate.lastName,
+            address: userUpdate.address,
+            phoneNumber: userUpdate.phoneNumber,
+            positionId: userUpdate.positionId,
+            gender: userUpdate.gender,
+            roleId: userUpdate.roleId,
+            image: userUpdate.image,
+            action: CRUD_ACTION.UPDATE,
+        })
+    }
+    handleDeteleUser = (user) => {
+        if (user && user.id) {
+            this.props.deleteUser(user.id);
         }
     }
     render() {
@@ -119,6 +181,7 @@ class UserRedux extends Component {
         let allRole = data.roleArr;
         let allGender = data.genderArr;
         let allPositon = data.positionArr;
+        let allUserData = data.allUser;
         return (
             <div className="container" >
                 <div className='user-redux-content'>
@@ -135,6 +198,7 @@ class UserRedux extends Component {
                                         name="email"
                                         placeholder="Email"
                                         type="email"
+                                        readOnly={data.action === CRUD_ACTION.UPDATE ? true : false}
                                         value={data.email}
                                         onChange={(event) => { this.handleChangeInput(event, "email") }}
                                     />
@@ -151,6 +215,7 @@ class UserRedux extends Component {
                                         placeholder="password placeholder"
                                         type="password"
                                         value={data.password}
+                                        readOnly={data.action === CRUD_ACTION.UPDATE ? true : false}
                                         onChange={(event) => { this.handleChangeInput(event, "password") }}
                                     />
                                 </FormGroup>
@@ -228,6 +293,7 @@ class UserRedux extends Component {
                                         id="exampleGender"
                                         name="gender"
                                         type="select"
+                                        value={data.gender}
                                         onChange={(event) => { this.handleChangeInput(event, "gender") }}
                                     >{allGender && allGender.map((item, index) => {
                                         return (
@@ -251,6 +317,7 @@ class UserRedux extends Component {
                                             id="roleId"
                                             name="roleId"
                                             type="select"
+                                            value={data.roleId}
                                             onChange={(event) => { this.handleChangeInput(event, "roleId") }}
                                         >
                                             {allRole && allRole.map((item, index) => {
@@ -276,6 +343,7 @@ class UserRedux extends Component {
                                             id="positionId"
                                             name="positionId"
                                             type="select"
+                                            value={data.positionId}
                                             onChange={(event) => { this.handleChangeInput(event, "positionId") }}
                                         >
                                             {allPositon && allPositon.map((item, index) => {
@@ -331,10 +399,42 @@ class UserRedux extends Component {
                                 Check me out
                             </Label>
                         </FormGroup>
-                        <Button className='mt-3' color="primary" onClick={() => { this.handleSaveUser() }}>
-                            Sign in
+                        <Button className='mt-3' color={data.action === CRUD_ACTION.UPDATE ? "warning" : "primary"} onClick={() => { this.handleSaveUser() }}>
+                            {data.action === CRUD_ACTION.UPDATE ? "Update User" : "Create User"}
                         </Button>
                     </Form>
+                    <div className="user-table mx-2 mt-5">
+                        <table id="customers">
+                            <tbody>
+                                <tr>
+                                    <th>Email</th>
+                                    <th>Last Name</th>
+                                    <th>First Name</th>
+                                    <th>Address</th>
+                                    <th>Action</th>
+                                </tr>
+                                {
+                                    allUserData && allUserData.map((item, index) => {
+                                        return (
+                                            <tr key={item.id}>
+                                                <td>{item.email}</td>
+                                                <td>{item.lastName}</td>
+                                                <td>{item.firstName}</td>
+                                                <td>{item.address}</td>
+                                                <td>
+                                                    <i className="fa-solid fa-user-pen mx-3" onClick={() => { this.handleUpdateUser(item) }}></i>
+                                                    <i className="fa-solid fa-trash"
+                                                        hidden={data.action === CRUD_ACTION.UPDATE && data.id === item.id ? true : false}
+                                                        onClick={() => { this.handleDeteleUser(item) }}></i>
+                                                </td>
+                                            </tr>
+                                        )
+                                    })
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
                 </div>
             </div >
         )
@@ -350,6 +450,10 @@ const mapStateToProps = state => {
         positionArr: state.admin.position,
         isLoading: state.admin.isLoading,
         isCreateUser: state.admin.isCreateUser,
+        isUpdateUser: state.admin.isUpdateUser,
+        allUser: state.admin.allUser,
+        isDeleteUser: state.admin.isDeleteUser,
+        errorMessage: state.admin.errorMessage,
     };
 };
 
@@ -359,6 +463,9 @@ const mapDispatchToProps = dispatch => {
         getPosition: () => dispatch(action.getPositionStart()),
         getRole: () => dispatch(action.getRoleStart()),
         createUserRedux: (data) => dispatch(action.createUserStart(data)),
+        getAllUser: () => dispatch(action.getAllUserStart()),
+        deleteUser: (userId) => dispatch(action.deleteUserStart(userId)),
+        updateUserRedux: (data) => dispatch(action.updateUserStart(data)),
     };
 };
 

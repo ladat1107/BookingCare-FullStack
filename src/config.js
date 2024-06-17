@@ -1,6 +1,7 @@
 export default {
     api: {
         API_BASE_URL: "http://localhost:8333/",
+        //API_BASE_URL: "https://65271956-d1d2-4594-b5cb-78b1e40e7646.mock.pstmn.io/",
         ROUTER_BASE_NAME: null,
     },
     app: {

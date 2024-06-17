@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import { ConnectedRouter as Router } from 'connected-react-router';
 import { history } from '../redux'
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 import { userIsAuthenticated, userIsNotAuthenticated } from '../hoc/authentication';
@@ -58,12 +59,13 @@ class App extends Component {
                                 </Switch>
                             </div>
 
-                            <ToastContainer
+                            {/* <ToastContainer
                                 className="toast-container" toastClassName="toast-item" bodyClassName="toast-item-body"
                                 autoClose={false} hideProgressBar={true} pauseOnHover={false}
                                 pauseOnFocusLoss={true} closeOnClick={false} draggable={false}
                                 closeButton={<CustomToastCloseButton />}
-                            />
+                            /> */}
+                             <ToastContainer autoClose={3000} />
                         </div>
                     </CustomScrollbar>
                 </Router>

@@ -1,5 +1,5 @@
 import actionTypes from './actionTypes';
-import { getAllCodeByType, createUserService } from "../../services/userService";
+import { getAllCodeByType, createUserService, getAllUser, deleteUserService, updateUserService } from "../../services/userService";
 
 //GENDER
 export const getGenderStart = () => {
@@ -58,6 +58,7 @@ export const createUserStart = (data) => {
             let respone = await createUserService(data);
             if (respone && respone.errCode === 0) {
                 dispatch(createUserSuccess(respone.message));
+                dispatch(getAllUserStart());
             } else {
                 dispatch(createUserFailed(respone.message));
             }
@@ -102,3 +103,83 @@ export const getRoleSuccess = (data) => ({
 export const getRoleFailed = () => ({
     type: actionTypes.GET_ROLE_FAILED
 })
+
+
+export const getAllUserStart = () => {
+    return async (dispatch, getState) => {
+        try {
+            // dispatch({ type: actionTypes.GET_ALL_USER_START, })
+            let allUser = await getAllUser("ALL");
+            if (allUser && allUser.errCode === 0) {
+                dispatch(getAllUserSuccess(allUser.user.reverse()));
+            } else {
+                dispatch(getAllUserFailed());
+            }
+        } catch (e) {
+            dispatch(getAllUserFailed());
+            console.log(e);
+        }
+    }
+}
+
+export const getAllUserSuccess = (data) => ({
+    type: actionTypes.GET_ALL_USER_SUCCESS,
+    data: data,
+})
+export const getAllUserFailed = () => ({
+    type: actionTypes.GET_ALL_USER_FAILED
+})
+
+
+export const deleteUserStart = (id) => {
+    return async (dispatch, getState) => {
+        try {
+            dispatch({ type: actionTypes.DELETE_USER_START, })
+            let respone = await deleteUserService(id);
+            if (respone && respone.errCode === 0) {
+                dispatch(deleteUserSuccess());
+                dispatch(getAllUserStart());
+            } else {
+                dispatch(deleteUserFailed());
+            }
+        } catch (e) {
+            dispatch(deleteUserFailed());
+            console.log(e);
+        }
+    }
+}
+
+export const deleteUserSuccess = (data) => ({
+    type: actionTypes.DELETE_USER_SUCCESS,
+    data: data,
+})
+export const deleteUserFailed = () => ({
+    type: actionTypes.DELETE_USER_FAILED
+})
+
+export const updateUserStart = (data) => {
+    return async (dispatch, getState) => {
+        try {
+            dispatch({ type: actionTypes.UPDATE_USER_START, })
+            let respone = await updateUserService(data);
+            if (respone && respone.errCode === 0) {
+                dispatch(updateUserSuccess());
+                dispatch(getAllUserStart());
+            } else {
+                dispatch(updateUserFailed(respone.message));
+            }
+        } catch (e) {
+            dispatch(updateUserFailed("Upadte user failed"));
+            console.log(e);
+        }
+    }
+}
+
+export const updateUserSuccess = () => ({
+    type: actionTypes.UPDATE_USER_SUCCESS
+})
+export const updateUserFailed = (message) => ({
+    type: actionTypes.UPDATE_USER_FAILED,
+    data: message,
+})
+
