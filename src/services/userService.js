@@ -19,6 +19,9 @@ const updateUserService = (user) => {
 const getAllCodeByType = (type) => {
     return axios.get(`/api/get-all-code?type=${type}`);
 }
+const getTopDoctor = (limit) => {
+    return axios.get(`/api/get-top-doctor?limit=${limit}`);
+}
 export {
     handleLogin,
     getAllUser,
@@ -26,4 +29,5 @@ export {
     deleteUserService,
     updateUserService,
     getAllCodeByType,
+    getTopDoctor,
 };

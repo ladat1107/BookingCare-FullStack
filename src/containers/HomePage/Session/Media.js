@@ -24,7 +24,6 @@ class Media extends Component {
 
 
     render() {
-        console.log("image:  ", images);
         return (
             <div className="media-container" >
                 <div className="media-content">

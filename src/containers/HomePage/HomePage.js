@@ -9,6 +9,7 @@ import Specialty from './Session/Specialty';
 import Facility from "./Session/Facility";
 import Media from './Session/Media';
 import HomePageFooter from './HomePageFooter';
+import Doctor from './Session/Doctor';
 class HomePage extends Component {
 
     constructor(props) {
@@ -30,6 +31,7 @@ class HomePage extends Component {
                 <ForYou />
                 <FullService />
                 <Specialty />
+                <Doctor />
                 <Facility />
                 <Media />
                 <HomePageFooter />

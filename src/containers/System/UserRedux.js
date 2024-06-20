@@ -2,12 +2,18 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { Form, Row, Col, FormGroup, Input, Label, Button, FormFeedback } from "reactstrap";
-import { getAllCodeByType } from "../../services/userService";
+
 import * as action from "../../store/actions"
 import thunk from 'redux-thunk';
 import "./UserRedux.scss";
 import { CRUD_ACTION, CommonUtils } from "../../utils"
 import { ToastContainer, toast } from 'react-toastify';
+
+import { createRoot } from 'react-dom/client'
+import Markdown from 'react-markdown'
+
+const markdown = '# Hi, *Pluto*!'
+
 
 class UserRedux extends Component {
 
@@ -455,6 +461,8 @@ class UserRedux extends Component {
                         </table>
 
                     </div>
+                    createRoot(document.body).render(<Markdown>{markdown}</Markdown>)
+
                 </div>
             </div >
         )
