@@ -5,6 +5,7 @@ import UserManage from '../containers/System/UserManage';
 import UserRedux from '../containers/System/UserRedux';
 import RegisterPackageGroupOrAcc from '../containers/System/RegisterPackageGroupOrAcc';
 import Header from '../containers/Header/Header';
+import DoctorManaga from '../containers/System/DoctorManaga';
 
 class System extends Component {
 
@@ -18,6 +19,7 @@ class System extends Component {
                         <Switch>
                             <Route path="/system/user-manage" component={UserManage} />
                             <Route path="/system/user-manage-redux" component={UserRedux} />
+                            <Route path="/system/doctor-manage" component={DoctorManaga} />
                             <Route component={() => { return (<Redirect to={systemMenuPath} />) }} />
                         </Switch>
                     </div>

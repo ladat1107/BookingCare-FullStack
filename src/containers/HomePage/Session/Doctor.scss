@@ -55,7 +55,6 @@
                 align-items: center;
                 justify-content: center;
                 text-align: center;
-                cursor: pointer;
                 padding: 10px 30px;
 
                 .image {
@@ -70,8 +69,7 @@
                     background-position: center;
                     /* Hình ảnh sẽ được căn giữa theo chiều ngang và dọc */
                     background-repeat: no-repeat;
-
-
+                    cursor: pointer;
                 }
 
                 .text-up {
@@ -80,7 +78,7 @@
                     font-family: Montserrat;
                     font-weight: 600;
                     padding-top: 15px;
-
+                    cursor: pointer;
                 }
 
                 .text-down {

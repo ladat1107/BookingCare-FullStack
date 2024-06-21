@@ -12,7 +12,6 @@ import { Provider } from 'react-redux';
 import reduxStore, { persistor } from './redux';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-
 const renderApp = () => {
     ReactDOM.render(
         <Provider store={reduxStore}>

@@ -1,19 +1,17 @@
 import axios from '../axios';
-import * as queryString from 'query-string';
 
-const adminService = {
+const getTopDoctor = () => {
+    return axios.get(`/api/get-all-doctor`);
+}
+const createDoctorPageInfor = (data) => {
+    return axios.post(`/api/create-page-doctor`, data);
+}
 
-    /**
-     * Đăng nhập hệ thống
-     * {
-     *  "username": "string",
-     *  "password": "string"
-     * }
-     */
-    login(loginBody) {
-        return axios.post(`/admin/login`, loginBody)
-    },
-
-};
-
-export default adminService;
+const getDoctorMarkdown = (doctorid) => {
+    return axios.get(`/api/get-doctor-mardown?doctorId=${doctorid}`);
+}
+export {
+    getTopDoctor,
+    createDoctorPageInfor,
+    getDoctorMarkdown
+}

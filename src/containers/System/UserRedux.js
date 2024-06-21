@@ -9,10 +9,17 @@ import "./UserRedux.scss";
 import { CRUD_ACTION, CommonUtils } from "../../utils"
 import { ToastContainer, toast } from 'react-toastify';
 
-import { createRoot } from 'react-dom/client'
-import Markdown from 'react-markdown'
+import * as ReactDOM from 'react-dom';
+import MarkdownIt from 'markdown-it';
+import MdEditor from 'react-markdown-editor-lite';
+// import style manually
+import 'react-markdown-editor-lite/lib/index.css';
+const mdParser = new MarkdownIt(/* Markdown-it options */);
 
-const markdown = '# Hi, *Pluto*!'
+// Finish!
+function handleEditorChange({ html, text }) {
+    console.log('handleEditorChange', html, text);
+}
 
 
 class UserRedux extends Component {
@@ -461,7 +468,12 @@ class UserRedux extends Component {
                         </table>
 
                     </div>
-                    createRoot(document.body).render(<Markdown>{markdown}</Markdown>)
+                    <Row className="mt-5 tille text-center">Thông tin bác sĩ</Row>
+                    <Row className='mt-3 '>
+                        <Col md={12}>
+                            <MdEditor style={{ height: '500px' }} renderHTML={text => mdParser.render(text)} onChange={handleEditorChange} />
+                        </Col>
+                    </Row>
 
                 </div>
             </div >

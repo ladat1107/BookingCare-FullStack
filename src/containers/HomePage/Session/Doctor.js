@@ -2,12 +2,14 @@ import React, { Component, Fragment } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { LANGUAGE } from "../../../utils/constant";
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import "./Doctor.scss";
 
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 
 import * as action from "../../../store/actions";
+
 
 const properties = {
     prevArrow: <button className='custom'><i className="fa-solid fa-chevron-left icon"></i></button>,
@@ -32,7 +34,9 @@ class Doctor extends Component {
             })
         }
     }
-
+    linkToDoctor = (doctor) => {
+        this.props.history.push(`/home-doctor/${doctor.id}`)
+    }
     render() {
         let allDoctor = this.state.doctorArr;
         let language = this.props.language;
@@ -59,8 +63,12 @@ class Doctor extends Component {
                                 let nameEn = item.positionData.valueEn + " " + item.firstName + " " + item.lastName;
                                 return (
                                     <div className='item' key={index}>
-                                        <div className='image' style={{ backgroundImage: `url(${imageBase64})` }}></div>
-                                        <div className='text-up'>{language === LANGUAGE.VI ? nameVi : nameEn}</div>
+                                        <div htmlFor="doctorSelected" className='image' style={{ backgroundImage: `url(${imageBase64})` }}></div>
+                                        <div id='doctorSelected'
+                                            className='text-up'
+                                            onClick={() => { this.linkToDoctor(item) }} >
+                                            {language === LANGUAGE.VI ? nameVi : nameEn}
+                                        </div>
                                         <div className='text-down'>Cơ sỡ y tế</div>
                                     </div>
                                 )
@@ -90,4 +98,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Doctor);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Doctor));
