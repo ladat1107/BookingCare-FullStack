@@ -5,7 +5,7 @@ export const adminMenu = [
             { name: 'menu.admin.crud-user', link: '/system/user-manage' },
             { name: 'menu.admin.crud-user-redux', link: '/system/user-manage-redux' },
             { name: 'menu.admin.doctor', link: '/system/doctor-manage' },
-            { name: 'menu.admin.admin', link: '/system/admin-manage' },
+            { name: 'menu.admin.manage-schedule-doctor', link: '/system/manage-schedule-doctor' },
         ],
     },
     {
@@ -27,4 +27,13 @@ export const adminMenu = [
             { name: 'menu.admin.handbook-manage', link: '/system/handbook-manage' }
         ]
     }
+];
+
+export const doctorMenu = [
+    {//DOCTOR MENU
+        name: 'menu.doctor.manage', menus: [
+            { name: 'menu.doctor.manage-schedule-doctor', link: '/doctor/manage-schedule-doctor' },
+        ],
+    },
+
 ];

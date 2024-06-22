@@ -11,7 +11,8 @@ import Home from '../routes/Home';
 import Login from './Auth/Login';
 import Header from './Header/Header';
 import System from '../routes/System';
-import DoctorPage from "../containers/Patient/Doctor/DoctorPage"
+import DoctorPage from "../containers/Patient/Doctor/DoctorPage";
+import Doctor from "../routes/Doctor";
 
 import { CustomToastCloseButton } from '../components/CustomToast';
 import CustomScrollbar from "../components/CustomScrollbars";
@@ -45,13 +46,12 @@ class App extends Component {
                     <CustomScrollbar >
                         <div className="main-container">
                             <ConfirmModal />
-                            {/* {this.props.isLoggedIn && <Header />} */}
-
                             <div className="content-container">
                                 <Switch>
                                     <Route path={path.HOME} exact component={(Home)} />
                                     <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} />
                                     <Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
+                                    <Route path={path.SYSTEM_DOCTOR} component={userIsAuthenticated(Doctor)} />
                                     <Route path={path.HOMEPAGE} component={(HomePage)} />
                                     <Route path={path.DOCTOR} component={(DoctorPage)} />
                                 </Switch>

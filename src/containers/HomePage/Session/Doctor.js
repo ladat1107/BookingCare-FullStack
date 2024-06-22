@@ -63,9 +63,8 @@ class Doctor extends Component {
                                 let nameEn = item.positionData.valueEn + " " + item.firstName + " " + item.lastName;
                                 return (
                                     <div className='item' key={index}>
-                                        <div htmlFor="doctorSelected" className='image' style={{ backgroundImage: `url(${imageBase64})` }}></div>
-                                        <div id='doctorSelected'
-                                            className='text-up'
+                                        <div onClick={() => { this.linkToDoctor(item) }} className='image' style={{ backgroundImage: `url(${imageBase64})` }}></div>
+                                        <div className='text-up'
                                             onClick={() => { this.linkToDoctor(item) }} >
                                             {language === LANGUAGE.VI ? nameVi : nameEn}
                                         </div>

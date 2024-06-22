@@ -3,6 +3,7 @@ export const path = {
     LOGIN: '/login',
     LOG_OUT: '/logout',
     SYSTEM: '/system',
+    SYSTEM_DOCTOR: '/doctor',
     HOMEPAGE: '/home',
     DOCTOR: '/home-doctor/:id'
 };
@@ -26,4 +27,9 @@ export const dateFormat = {
 export const YesNoObj = {
     YES: 'Y',
     NO: 'N'
+}
+export const ROLE = {
+    ADMIN: "R1",
+    DOCTOR: "R2",
+    PATIENT: "R3"
 }

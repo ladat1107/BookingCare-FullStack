@@ -40,13 +40,17 @@
             "crud-user": "User Manage",
             "crud-user-redux": "User Manage redux",
             "doctor": "Doctor manage",
-            "admin": "Admin manage",
+            "manage-schedule-doctor": "Manage medical examination schedule",
             "clinic": "Clinic",
             "clinic-manage": "Clinic manage",
             "specialty": "Specialty",
             "specialty-manage": "Specialty manage",
             "handbook": "Handbook",
             "handbook-manage": "Handbook manage"
+        },
+        "doctor": {
+            "manage": "Manage",
+            "manage-schedule-doctor": "Manage medical examination schedule"
         }
     },
     "system": {

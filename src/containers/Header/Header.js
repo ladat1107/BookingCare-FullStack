@@ -3,24 +3,48 @@ import { connect } from 'react-redux';
 
 import * as actions from "../../store/actions";
 import Navigator from '../../components/Navigator';
-import { adminMenu } from './menuApp';
+import { adminMenu, doctorMenu } from './menuApp';
 import './Header.scss';
-import { LANGUAGE } from '../../utils';
+import { LANGUAGE, ROLE } from '../../utils';
 import { changeLanguageApp } from "../../store/actions";
+import _ from 'lodash';
 
 class Header extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            menuApp: [],
+        }
+    }
     changeLanguage = (language) => {
         this.props.changeLanguageAppRedux(language);
+    }
+    componentDidMount() {
+        let { userInfor } = this.props;
+        let menu = [];
+        if (userInfor) {
+            if (userInfor.roleId == ROLE.DOCTOR) {
+                menu = doctorMenu
+            }
+            if (userInfor.roleId == ROLE.ADMIN) {
+                menu = adminMenu;
+            }
+        }
+        this.setState({
+            menuApp: menu,
+        })
     }
 
     render() {
         const { processLogout } = this.props;
         let language = this.props.language;
+        let { menuApp } = this.state;
+        console.log("check user: ", this.props.userInfor)
         return (
             <div className="header-container">
                 {/* thanh navigator */}
                 <div className="header-tabs-container">
-                    <Navigator menus={adminMenu} />
+                    <Navigator menus={menuApp} />
                 </div>
                 <div className='right'>
                     <div className='language'>
@@ -49,6 +73,7 @@ const mapStateToProps = state => {
     return {
         isLoggedIn: state.user.isLoggedIn,
         language: state.app.language,
+        userInfor: state.user.userInfo,
     };
 };
 

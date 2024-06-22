@@ -22,6 +22,9 @@ const getAllCodeByType = (type) => {
 const getTopDoctor = (limit) => {
     return axios.get(`/api/get-top-doctor?limit=${limit}`);
 }
+const getDoctorMarkdown = (doctorid) => {
+    return axios.get(`/api/get-doctor-mardown?doctorId=${doctorid}`);
+}
 export {
     handleLogin,
     getAllUser,
@@ -30,4 +33,6 @@ export {
     updateUserService,
     getAllCodeByType,
     getTopDoctor,
+    getDoctorMarkdown,
+
 };

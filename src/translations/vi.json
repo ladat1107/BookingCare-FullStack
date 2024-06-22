@@ -40,13 +40,17 @@
             "crud-user": "Quản lý người dùng",
             "crud-user-redux": "Quản lý User redux",
             "doctor": "Quản lý bác sĩ",
-            "admin": "Quản lý admin",
+            "manage-schedule-doctor": "Quản lý lịch khám",
             "clinic": "Phòng khám",
             "clinic-manage": "Quản lý phòng khám",
             "specialty": "Chuyên khoa",
             "specialty-manage": "Quản lý chuyên khoa",
             "handbook": "Cẩm nang",
             "handbook-manage": "Quản lý cẩm nang"
+        },
+        "doctor": {
+            "manage": "Quản lý",
+            "manage-schedule-doctor": "Quản lý lịch khám "
         }
     }
 }
