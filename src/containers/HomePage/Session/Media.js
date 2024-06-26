@@ -28,7 +28,7 @@ class Media extends Component {
             <div className="media-container" >
                 <div className="media-content">
                     <div className='up'>
-                        <span>Truyền thông nói về BookingCare</span>
+                        <span><FormattedMessage id="homepage-header.media" /></span>
                     </div>
                     <div className="down">
                         <div className='down-left'>

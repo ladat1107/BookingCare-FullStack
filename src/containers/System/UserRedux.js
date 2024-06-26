@@ -83,7 +83,7 @@ class UserRedux extends Component {
             })
         }
         if (this.props.isDeleteUser !== prevProps.isDeleteUser && this.props.isDeleteUser === true) {
-            toast.success("Delete user successfull !", {
+            toast.success(<FormattedMessage id="system.admin.user-redux.deleteUserSuccess" />, {
                 position: toast.POSITION.BOTTOM_CENTER
             });
         }
@@ -95,11 +95,11 @@ class UserRedux extends Component {
         if ((this.props.isCreateUser !== prevProps.isCreateUser && this.props.isCreateUser === true ||
             (this.props.isUpdateUser !== prevProps.isUpdateUser && this.props.isUpdateUser === true))) {
             if (this.state.action === CRUD_ACTION.UPDATE) {
-                toast.success("Update user successfull !", {
+                toast.success(<FormattedMessage id="system.admin.user-redux.updateUserSuccess" />, {
                     position: toast.POSITION.BOTTOM_CENTER
                 });
             } else {
-                toast.success("Create user successfull !", {
+                toast.success(<FormattedMessage id="system.admin.user-redux.createUserSuccess" />, {
                     position: toast.POSITION.BOTTOM_CENTER
                 });
             }
@@ -140,7 +140,7 @@ class UserRedux extends Component {
         let arr = ["email", "password", "firstName", "lastName", "address", "phoneNumber"];
         for (let i = 0; i < arr.length; i++) {
             if (!this.state[arr[i]]) {
-                alert(arr[i] + " mustn't empty!");
+                alert(arr[i] + <FormattedMessage id={`system.admin.user-redux.${arr[i]}MustNotEmpty`} />);
                 return true;
             }
         }
@@ -218,13 +218,13 @@ class UserRedux extends Component {
         return (
             <div className="container" >
                 <div className='user-redux-content'>
-                    <div className="text-center title">Manage users redux</div>
+                    <div className="text-center title"><FormattedMessage id="system.admin.user-redux.title" /></div>
                     <Form className='mt-5'>
                         <Row>
                             <Col md={3}>
                                 <FormGroup>
                                     <Label for="exampleEmail">
-                                        Email
+                                        <FormattedMessage id="system.admin.user-redux.email" />
                                     </Label>
                                     <Input
                                         id="exampleEmail"
@@ -240,7 +240,7 @@ class UserRedux extends Component {
                             <Col md={3}>
                                 <FormGroup>
                                     <Label for="examplePassword">
-                                        Password
+                                        <FormattedMessage id="system.admin.user-redux.password" />
                                     </Label>
                                     <Input
                                         id="examplePassword"
@@ -256,7 +256,7 @@ class UserRedux extends Component {
                             <Col md={3}>
                                 <FormGroup>
                                     <Label for="exampleFirstName">
-                                        First Name
+                                        <FormattedMessage id="system.admin.user-redux.firstName" />
                                     </Label>
                                     <Input
                                         id="exampleFirstName"
@@ -271,7 +271,7 @@ class UserRedux extends Component {
                             <Col md={3}>
                                 <FormGroup>
                                     <Label for="exampleLastName">
-                                        Last Name
+                                        <FormattedMessage id="system.admin.user-redux.lastName" />
                                     </Label>
                                     <Input
                                         id="exampleLastName"
@@ -288,7 +288,7 @@ class UserRedux extends Component {
                             <Col md={6}>
                                 <FormGroup>
                                     <Label for="exampleAddress">
-                                        Address
+                                        <FormattedMessage id="system.admin.user-redux.address" />
                                     </Label>
                                     <Input
                                         id="exampleAddress"
@@ -302,7 +302,7 @@ class UserRedux extends Component {
                             <Col md={6}>
                                 <FormGroup>
                                     <Label for="examplePhone">
-                                        Phone Number
+                                        <FormattedMessage id="system.admin.user-redux.phoneNumber" />
                                     </Label>
                                     <Input
                                         id="examplePhone"
@@ -320,7 +320,7 @@ class UserRedux extends Component {
                             <Col md={3}>
                                 <FormGroup>
                                     <Label for="exampleGender">
-                                        Gender
+                                        <FormattedMessage id="system.admin.user-redux.gender" />
                                     </Label>
                                     <Input
                                         id="exampleGender"
@@ -343,7 +343,7 @@ class UserRedux extends Component {
                                     <Label
                                         for="roleId"
                                     >
-                                        Role
+                                        <FormattedMessage id="system.admin.user-redux.role" />
                                     </Label>
                                     <Col >
                                         <Input
@@ -369,7 +369,7 @@ class UserRedux extends Component {
                                     <Label
                                         for="positionId"
                                     >
-                                        Position
+                                        <FormattedMessage id="system.admin.user-redux.position" />
                                     </Label>
                                     <Col >
                                         <Input
@@ -395,7 +395,7 @@ class UserRedux extends Component {
                                     <Label
                                         for="exampleFile"
                                     >
-                                        File
+                                        <FormattedMessage id="system.admin.user-redux.file" />
                                     </Label>
                                     <Col >
                                         <Input
@@ -410,7 +410,7 @@ class UserRedux extends Component {
                                                 className='label'
                                                 for="exampleFile"
                                             >
-                                                Tải ảnh
+                                                <FormattedMessage id="system.admin.user-redux.uploadImage" />
                                             </Label>
                                             {data.urlImage ? <div className='image' style={{ backgroundImage: `url(${data.urlImage})` }}></div> : <div></div>}
                                         </div>
@@ -429,11 +429,11 @@ class UserRedux extends Component {
                                 check
                                 for="exampleCheck"
                             >
-                                Check me out
+                                <FormattedMessage id="system.admin.user-redux.checkMeOut" />
                             </Label>
                         </FormGroup>
                         <Button className='mt-3' color={data.action === CRUD_ACTION.UPDATE ? "warning" : "primary"} onClick={() => { this.handleSaveUser() }}>
-                            {data.action === CRUD_ACTION.UPDATE ? "Update User" : "Create User"}
+                            <FormattedMessage id={data.action === CRUD_ACTION.UPDATE ? "system.admin.user-redux.updateUser" : "system.admin.user-redux.createUser"} />
                         </Button>
                     </Form>
                     <div className="user-table mx-2 mt-5">
@@ -468,12 +468,6 @@ class UserRedux extends Component {
                         </table>
 
                     </div>
-                    <Row className="mt-5 tille text-center">Thông tin bác sĩ</Row>
-                    <Row className='mt-3 '>
-                        <Col md={12}>
-                            <MdEditor style={{ height: '500px' }} renderHTML={text => mdParser.render(text)} onChange={handleEditorChange} />
-                        </Col>
-                    </Row>
 
                 </div>
             </div >

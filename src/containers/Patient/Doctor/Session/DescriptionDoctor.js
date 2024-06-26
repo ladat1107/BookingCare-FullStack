@@ -7,6 +7,8 @@ import * as action from "../../../../store/actions";
 import "./DescriptionDoctor.scss";
 import { ToastContainer, toast } from 'react-toastify';
 import { LANGUAGE } from "../../../../utils/index"
+import ScheduleDoctor from "../../../../components/Doctor/ScheduleDoctor";
+import DoctorInfo from "../../../../components/Doctor/DoctorInfo";
 class DescriptionDoctor extends Component {
 
     constructor(props) {
@@ -51,6 +53,15 @@ class DescriptionDoctor extends Component {
                         <div dangerouslySetInnerHTML={{ __html: markdown && markdown.description ? markdown.description : "" }}></div>
                     </Col>
                 </Row >
+                <Row className='schedule-address-doctor'>
+                    <Col md={7} className='schedule-doctor-left'>
+                        <ScheduleDoctor doctorId={doctor && doctor.id ? doctor.id : null} />
+                    </Col>
+                    <Col md={5} className='address-doctor-right'>
+                        <DoctorInfo doctorInfor={doctor && doctor.Doctor_info ? doctor.Doctor_info : null} />
+                    </Col>
+
+                </Row>
             </div >
         )
     }

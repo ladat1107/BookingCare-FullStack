@@ -1,6 +1,58 @@
 import actionTypes from './actionTypes';
 import { getAllCodeByType, createUserService, getAllUser, deleteUserService, updateUserService } from "../../services/userService";
 
+export const getDoctorInfoAllCodeStart = () => {
+    return async (dispatch, getState) => {
+        try {
+            //dispatch({ type: actionTypes.GET_DATA_DOCTOR_ALLCODE_START, })
+            let price = await getAllCodeByType("PRICE");
+            let province = await getAllCodeByType("PROVINCE");
+            let payment = await getAllCodeByType("PAYMENT");
+            let data = [];
+            if (price && price.errCode === 0 && province && province.errCode === 0 && payment && payment.errCode === 0) {
+                data.push({ price: price.allCode, province: province.allCode, payment: payment.allCode });
+                dispatch(getDoctorInfoAllCodeSuccess(data));
+            } else {
+                dispatch(getDoctorInfoAllCodeFailed());
+            }
+        } catch (e) {
+            dispatch(getTimeAllCodeFailed());
+            console.log(e);
+        }
+    }
+}
+export const getDoctorInfoAllCodeSuccess = (data) => ({
+    type: actionTypes.GET_DATA_DOCTOR_ALLCODE_SUCCESS,
+    data: data,
+})
+export const getDoctorInfoAllCodeFailed = () => ({
+    type: actionTypes.GET_DATA_DOCTOR_ALLCODE_FAILED
+})
+
+export const getTimeAllCodeStart = () => {
+    return async (dispatch, getState) => {
+        try {
+            //dispatch({ type: actionTypes.GET_TIME_ALLCODE_START, })
+            let time = await getAllCodeByType("TIME");
+            if (time && time.errCode === 0) {
+                dispatch(getTimeAllCodeSuccess(time.allCode));
+            } else {
+                dispatch(getTimeAllCodeFailed());
+            }
+        } catch (e) {
+            dispatch(getTimeAllCodeFailed());
+            console.log(e);
+        }
+    }
+}
+export const getTimeAllCodeSuccess = (data) => ({
+    type: actionTypes.GET_TIME_ALLCODE_SUCCESS,
+    data: data,
+})
+export const getTimeAllCodeFailed = () => ({
+    type: actionTypes.GET_TIME_ALLCODE_FAILED
+})
+
 //GENDER
 export const getGenderStart = () => {
     return async (dispatch, getState) => {

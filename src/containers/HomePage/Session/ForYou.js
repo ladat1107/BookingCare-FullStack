@@ -28,22 +28,22 @@ class ForYou extends Component {
             <div className="for-you-container" >
                 <div className='for-you-content'>
                     <div className='up'>
-                        <span>Dành cho bạn</span>
+                        <span><FormattedMessage id="homepage-header.forYou" /></span>
                     </div>
                     <div className="down">
                         <CircleText image={"../../assets/headerHomePage/csyt.png"}
-                            text={"Cơ sỡ y tế 0"} />
+                            text={<FormattedMessage id="homepage-header.medical_facility" />} />
                         <div className='item'>
                             <div className='image'></div>
-                            <div className='text'>Cơ sỡ y tế</div>
+                            <div className='text'><FormattedMessage id="homepage-header.medical_facility" /></div>
                         </div>
                         <div className='item'>
                             <div className='image'></div>
-                            <div className='text'>Bác sĩ</div>
+                            <div className='text'><FormattedMessage id="homepage-header.doctor" /></div>
                         </div>
                         <div className='item'>
                             <div className='image'></div>
-                            <div className='text'>Chuyên khoa</div>
+                            <div className='text'><FormattedMessage id="homepage-header.specialty" /></div>
                         </div>
                     </div>
                 </div>

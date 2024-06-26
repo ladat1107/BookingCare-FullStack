@@ -6,7 +6,23 @@
         "healthy": "Sống khỏe",
         "search": "Tìm kiếm bác sĩ",
         "schedule": "Lịch hẹn",
-        "support": "Hỗ trợ"
+        "support": "Hỗ trợ",
+        "fullService": "Dịch vụ toàn diện",
+        "highlighted_doctors": "Bác sĩ nổi bật",
+        "view_more": "Xem thêm",
+        "medical_facility": "Cơ sở y tế",
+        "medicalSpecialties": "Khám chuyên khoa",
+        "remoteConsultation": "Khám từ xa",
+        "generalCheckup": "Khám tổng quát",
+        "medicalTests": "Xét nghiệm y học",
+        "mentalHealth": "Sức khỏe tinh thần",
+        "dentalCheckup": "Khám nha khoa",
+        "surgicalPackage": "Gói phẫu thuật",
+        "diabetesCare": "Sống khỏe tiểu đường",
+        "specialty":"Chuyên khoa",
+        "media":"Truyền thông nói về BookingCare",
+        "forYou":"Dành cho bạn",
+        "doctor":"Bác sĩ"
     },
     "common": {
         "add": "Thêm",
@@ -52,5 +68,68 @@
             "manage": "Quản lý",
             "manage-schedule-doctor": "Quản lý lịch khám "
         }
-    }
+    },
+    "system": {
+        "admin": {
+            "doctorInfor": {
+                "title": "Quản lý thông tin bác sĩ",
+                "selectedDoctor": "Chọn bác sĩ",
+                "descrition": "Mô tả",
+                "selectedPrice": "Chọn giá",
+                "selectedPayment": "Chọn phương thức thanh toán",
+                "selectedProvince": "Chọn tỉnh/thành phố",
+                "btnSave": "Lưu",
+                "btnUpdate": "Cập nhật",
+                "clinicName": "Tên phòng khám",
+                "clinicAddress": "Địa chỉ phòng khám",
+                "note": "Ghi chú",
+                "warningMessage": "Vui lòng nhập đầy đủ thông tin"
+            },
+            "schedule-doctor": {
+                "title": "Quản lý lịch khám bệnh",
+                "selectDoctor": "Chọn bác sĩ",
+                "selectDate": "Chọn ngày",
+                "btnSave": "Lưu",
+                "btnUpdate": "Cập nhật",
+                "warningMessage.selectDoctorAndDate": "Vui lòng chọn ngày và bác sĩ",
+                "warningMessage.selectSchedule": "Vui lòng chọn lịch khám",
+                "successMessage": "Thêm lịch thành công",
+                "errorMessage": "Đã xảy ra lỗi"
+            },
+            "user-redux": {
+                "title": "Quản lý người dùng",
+                "email": "Email",
+                "password": "Mật khẩu",
+                "firstName": "Tên",
+                "lastName": "Họ",
+                "address": "Địa chỉ",
+                "phoneNumber": "Số điện thoại",
+                "gender": "Giới tính",
+                "role": "Vai trò",
+                "position": "Chức vụ",
+                "file": "Tệp",
+                "uploadImage": "Tải ảnh",
+                "checkMeOut": "Kiểm tra tôi",
+                "createUser": "Tạo người dùng",
+                "updateUser": "Cập nhật người dùng",
+                "emailMustNotEmpty": "Email không được để trống!",
+                "passwordMustNotEmpty": "Mật khẩu không được để trống!",
+                "firstNameMustNotEmpty": "Tên không được để trống!",
+                "lastNameMustNotEmpty": "Họ không được để trống!",
+                "addressMustNotEmpty": "Địa chỉ không được để trống!",
+                "phoneNumberMustNotEmpty": "Số điện thoại không được để trống!",
+                "manageUsersRedux": "Quản lý người dùng redux",
+                "action": "Hành động",
+                "deleteUserSuccess": "Xóa người dùng thành công!",
+                "createUserSuccess": "Tạo người dùng thành công!",
+                "updateUserSuccess": "Cập nhật người dùng thành công!",
+                "error": "Đã xảy ra lỗi!"
+            }
+        },
+        "doctor": {
+            "manage": "Quản lý",
+            "manage-schedule-doctor": "Quản lý lịch khám "
+        }
+    },
+    "home-user": {}
 }

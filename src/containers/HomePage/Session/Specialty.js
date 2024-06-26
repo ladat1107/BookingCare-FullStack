@@ -34,8 +34,8 @@ class Specialty extends Component {
             <div className="specialty-container" >
                 <div className='specialty-content'>
                     <div className='up'>
-                        <div className='text'>Chuyên khoa</div>
-                        <div className='button'>Xem thêm</div>
+                        <div className='text'> <FormattedMessage id={"homepage-header.specialty"} defaultMessage="Medical Specialties" /></div>
+                        <div className='button'><FormattedMessage id="homepage-header.view_more" /></div>
                     </div>
                     <div className="down">
                         <Slide
@@ -62,11 +62,7 @@ class Specialty extends Component {
                             <ItemSlider
                                 image={images}
                                 text={"Thần kinh"} />
-
-
                         </Slide>
-
-
                     </div>
                 </div>
             </div>

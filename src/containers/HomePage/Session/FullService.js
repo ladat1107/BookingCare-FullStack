@@ -26,47 +26,47 @@ class FullService extends Component {
             <div className="service-container" >
                 <div className='service-content'>
                     <div className='service-header'>
-                        <span>Dịch vụ toàn diện</span>
+                        <span><FormattedMessage id={"homepage-header.fullService"} /></span>
                     </div>
                     <div className="service-body">
                         <div className='line'>
                             <div className='item'>
                                 <div className='icon'><i className="fa-regular fa-hospital fa-2xl"></i></div>
-                                <div className='text'>Khám chuyên khoa</div>
+                                <div className='text'> <FormattedMessage id={"homepage-header.medicalSpecialties"} defaultMessage="Medical Specialties" /></div>
                             </div>
                             <div className='item'>
                                 <div className='icon'><i className="fa-solid fa-phone fa-2xl"></i></div>
-                                <div className='text'>Khám từ xa</div>
+                                <div className='text'><FormattedMessage id={"homepage-header.remoteConsultation"} defaultMessage="Remote Consultation" /></div>
                             </div>
                         </div>
                         <div className='line'>
                             <div className='item'>
                                 <div className='icon'></div>
-                                <div className='text'>Khám tổng quát</div>
+                                <div className='text'><FormattedMessage id={"homepage-header.generalCheckup"} defaultMessage="General Checkup" /></div>
                             </div>
                             <div className='item'>
                                 <div className='icon'></div>
-                                <div className='text'>Xét nghiệm y học</div>
-                            </div>
-                        </div>
-                        <div className='line'>
-                            <div className='item'>
-                                <div className='icon'></div>
-                                <div className='text'>Sức khỏe tinh thần</div>
-                            </div>
-                            <div className='item'>
-                                <div className='icon'></div>
-                                <div className='text'>Khám nha khoa</div>
+                                <div className='text'><FormattedMessage id={"homepage-header.medicalTests"} defaultMessage="Medical Tests" /></div>
                             </div>
                         </div>
                         <div className='line'>
                             <div className='item'>
                                 <div className='icon'></div>
-                                <div className='text'>Gói phẫu thuật</div>
+                                <div className='text'><FormattedMessage id={"homepage-header.mentalHealth"} defaultMessage="Mental Health" /></div>
                             </div>
                             <div className='item'>
                                 <div className='icon'></div>
-                                <div className='text'>Sống khỏe tiểu đường</div>
+                                <div className='text'><FormattedMessage id={"homepage-header.dentalCheckup"} defaultMessage="Dental Checkup" /></div>
+                            </div>
+                        </div>
+                        <div className='line'>
+                            <div className='item'>
+                                <div className='icon'></div>
+                                <div className='text'><FormattedMessage id={"homepage-header.surgicalPackage"} defaultMessage="Surgical Package" /></div>
+                            </div>
+                            <div className='item'>
+                                <div className='icon'></div>
+                                <div className='text'><FormattedMessage id={"homepage-header.diabetesCare"} defaultMessage="Diabetes Care" /></div>
                             </div>
                         </div>
                     </div>

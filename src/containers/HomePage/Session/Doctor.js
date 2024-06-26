@@ -44,8 +44,8 @@ class Doctor extends Component {
             <div className="doctor-container" >
                 <div className='doctor-content'>
                     <div className='up'>
-                        <div className='text'>Bác sĩ nổi bật</div>
-                        <div className='button'>Xem thêm</div>
+                        <div className='text'><FormattedMessage id="homepage-header.highlighted_doctors" /></div>
+                        <div className='button'><FormattedMessage id="homepage-header.view_more" /></div>
                     </div>
                     <div className="down">
                         {allDoctor && allDoctor.length > 0 ? <Slide

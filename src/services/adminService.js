@@ -10,8 +10,13 @@ const createDoctorPageInfor = (data) => {
 const getDoctorMarkdown = (doctorid) => {
     return axios.get(`/api/get-doctor-mardown?doctorId=${doctorid}`);
 }
+
+const createScheduleDoctor = (data) => {
+    return axios.post(`/api/create-schedule-doctor`, data);
+}
 export {
     getTopDoctor,
     createDoctorPageInfor,
-    getDoctorMarkdown
+    getDoctorMarkdown,
+    createScheduleDoctor,
 }

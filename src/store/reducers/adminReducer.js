@@ -3,8 +3,12 @@ import actionTypes from '../actions/actionTypes';
 const initialState = {
     isLoading: false,
     isDeleteUser: false,
+    time: [],
     gender: [],
     role: [],
+    price: [],
+    payment: [],
+    province: [],
     position: [],
     isCreateUser: false,
     isUpdateUser: false,
@@ -14,6 +18,36 @@ const initialState = {
 
 const adminReducer = (state = initialState, action) => {
     switch (action.type) {
+        case actionTypes.GET_DATA_DOCTOR_ALLCODE_START:
+            return {
+                ...state,
+            }
+        case actionTypes.GET_DATA_DOCTOR_ALLCODE_SUCCESS:
+            //let [price, province] = 
+            //console.log("check price: ", action.data[0].price);
+            state.price = action.data[0].price;
+            state.payment = action.data[0].payment;
+            state.province = action.data[0].province;
+            return {
+                ...state,
+            }
+        case actionTypes.GET_DATA_DOCTOR_ALLCODE_FAILED:
+            return {
+                ...state,
+            }
+        case actionTypes.GET_TIME_ALLCODE_START:
+            return {
+                ...state,
+            }
+        case actionTypes.GET_TIME_ALLCODE_SUCCESS:
+            state.time = action.data;
+            return {
+                ...state,
+            }
+        case actionTypes.GET_TIME_ALLCODE_FAILED:
+            return {
+                ...state,
+            }
         case actionTypes.GET_GENDER_START:
             state.isLoading = false;
             return {

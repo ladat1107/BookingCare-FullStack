@@ -3,7 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import HomePageHeader from '../../HomePage/HomePageHeader';
 import HomePageFooter from '../../HomePage/HomePageFooter';
-import DescriptionDoctor from '../Doctor/Session/DescriptonDoctor';
+import DescriptionDoctor from '../Doctor/Session/DescriptionDoctor';
 import DescriptionContent from "../Doctor/Session/DescriptionContent";
 import * as userService from "../../../services/userService";
 import { ToastContainer, toast } from 'react-toastify';
@@ -34,7 +34,6 @@ class DoctorPage extends Component {
 
     render() {
         let { doctor } = this.state;
-        console.log(doctor);
         return (
             <div>
                 <HomePageHeader />

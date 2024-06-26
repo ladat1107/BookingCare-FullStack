@@ -34,8 +34,8 @@ class Facility extends Component {
             <div className="facility-container" >
                 <div className='facility-content'>
                     <div className='up'>
-                        <div className='text'>Cơ sỡ y tế</div>
-                        <div className='button'>Xem thêm</div>
+                        <div className='text'><FormattedMessage id="homepage-header.medical_facility" /></div>
+                        <div className='button'><FormattedMessage id="homepage-header.view_more" /></div>
                     </div>
                     <div className="down">
                         <Slide

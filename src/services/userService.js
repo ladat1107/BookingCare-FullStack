@@ -25,6 +25,9 @@ const getTopDoctor = (limit) => {
 const getDoctorMarkdown = (doctorid) => {
     return axios.get(`/api/get-doctor-mardown?doctorId=${doctorid}`);
 }
+const getScheduleDoctorByDate = (doctorId, date) => {
+    return axios.get(`/api/get-schedule-doctor?doctorId=${doctorId}&date=${date}`);
+}
 export {
     handleLogin,
     getAllUser,
@@ -34,5 +37,6 @@ export {
     getAllCodeByType,
     getTopDoctor,
     getDoctorMarkdown,
+    getScheduleDoctorByDate,
 
 };
