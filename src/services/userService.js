@@ -28,6 +28,9 @@ const getDoctorMarkdown = (doctorid) => {
 const getScheduleDoctorByDate = (doctorId, date) => {
     return axios.get(`/api/get-schedule-doctor?doctorId=${doctorId}&date=${date}`);
 }
+const createAppointmentDoctor = (data) => {
+    return axios.post("/api/create-appointment-doctor", data);
+}
 export {
     handleLogin,
     getAllUser,
@@ -38,5 +41,6 @@ export {
     getTopDoctor,
     getDoctorMarkdown,
     getScheduleDoctorByDate,
+    createAppointmentDoctor,
 
 };

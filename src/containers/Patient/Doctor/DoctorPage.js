@@ -1,12 +1,16 @@
 import React, { Component, Fragment } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
+import { Row, Col } from "reactstrap";
 import HomePageHeader from '../../HomePage/HomePageHeader';
 import HomePageFooter from '../../HomePage/HomePageFooter';
 import DescriptionDoctor from '../Doctor/Session/DescriptionDoctor';
+import ScheduleDoctor from "../../../components/Doctor/ScheduleDoctor";
+import DoctorInfo from "../../../components/Doctor/DoctorInfo";
 import DescriptionContent from "../Doctor/Session/DescriptionContent";
 import * as userService from "../../../services/userService";
 import { ToastContainer, toast } from 'react-toastify';
+import "./DoctorPage.scss"
 class DoctorPage extends Component {
 
     constructor(props) {
@@ -40,6 +44,16 @@ class DoctorPage extends Component {
                 {doctor ?
                     <Fragment>
                         <DescriptionDoctor doctorParent={doctor} />
+                        <div className='container'>
+                            <Row className='schedule-address-doctor'>
+                                <Col md={7} className='schedule-doctor-left'>
+                                    <ScheduleDoctor doctorParent={doctor ? doctor : null} />
+                                </Col>
+                                <Col md={5} className='address-doctor-right'>
+                                    <DoctorInfo doctorInfor={doctor && doctor.Doctor_info ? doctor.Doctor_info : null} />
+                                </Col>
+                            </Row>
+                        </div>
                         <DescriptionContent doctorParent={doctor} />
                     </Fragment>
                     : <> </>

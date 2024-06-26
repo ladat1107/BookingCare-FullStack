@@ -1,12 +1,14 @@
 import React, { Component, Fragment } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { Row } from 'reactstrap';
+import { Row, Modal } from 'reactstrap';
 import { connect } from 'react-redux';
 import "./ScheduleDoctor.scss";
 import { parse, format, addDays } from 'date-fns';
 import { LANGUAGE } from '../../utils';
 import * as userService from "../../services/userService";
 import _ from 'lodash';
+import ModalBooking from "./ModalBooking"
+import { da, it } from 'date-fns/locale';
 const weekMap = [
     { en: 'Monday', vi: 'Thứ Hai' },
     { en: 'Tuesday', vi: 'Thứ Ba' },
@@ -23,6 +25,9 @@ class ScheduleDoctor extends Component {
         super(props);
         let day = new Date();
         this.state = {
+            dataBooking: {},
+            doctor: [],
+            isOpenModalBooking: false,
             today: day.getTime(day.setHours(0, 0, 0, 0)),
             arrDay: [],
             arrTime: [],
@@ -34,7 +39,6 @@ class ScheduleDoctor extends Component {
         } else {
             return `${weekMap[dateString.getDay()].vi} - ${dateString.getDate()} / ${dateString.getMonth() + 1}`;
         }
-
     }
     componentDidMount() {
         this.setArrDay();
@@ -43,7 +47,10 @@ class ScheduleDoctor extends Component {
         if (this.props.language !== prevProps.language) {
             this.setArrDay();
         }
-        if (this.props.doctorId !== prevProps.doctorId) {
+        if (this.props.doctorParent !== prevProps.doctorParent) {
+            this.setState({
+                doctor: this.props.doctorParent,
+            })
             this.setArrTime();
         }
     }
@@ -70,7 +77,7 @@ class ScheduleDoctor extends Component {
 
     }
     setArrTime = async () => {
-        let doctorId = this.props.doctorId;
+        let doctorId = this.props.doctorParent.id;
         if (doctorId) {
             let respone = await userService.getScheduleDoctorByDate(doctorId, this.state.today)
             if (respone && respone.errCode === 201 && respone.data) {
@@ -84,10 +91,20 @@ class ScheduleDoctor extends Component {
             }
         }
     }
-
+    handleClickChoose = (item) => {
+        let data = {};
+        data = ({ timeData: item, doctorData: this.state.doctor });
+        this.setState({
+            isOpenModalBooking: true,
+            dataBooking: data,
+        })
+    }
+    toggle = () => {
+        this.setState({ isOpenModalBooking: false })
+    }
     render() {
         let language = this.props.language;
-        let { arrDay, arrTime, today } = this.state;
+        let { arrDay, arrTime, dataBooking } = this.state;
         return (
             <div className="componment-schedule-doctor">
                 <Row className="selecte-time-doctor">
@@ -123,6 +140,11 @@ class ScheduleDoctor extends Component {
                             } <div className='medical-schedule-book'> <span>Chọn <i className="fa-solid fa-hand-point-up"></i> và đặt (Phí đặt lịch 0đ)</span></div>
                         </Fragment> : <div>Không có lịch làm việc của y bác sĩ!</div>}
                 </Row>
+                <ModalBooking
+                    isOpen={this.state.isOpenModalBooking}
+                    toggleFromParent={this.toggle}
+                    dataBooking={dataBooking ? dataBooking : {}}
+                />
 
             </div >
         )

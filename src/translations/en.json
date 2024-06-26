@@ -134,5 +134,19 @@
             "manage": "Quản lý",
             "manage-schedule-doctor": "Quản lý lịch khám "
         }
+    },
+    "home": {
+        "doctor": {
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "phoneNumber": "Phone Number",
+            "email": "Email",
+            "address": "Address",
+            "reason": "Reason",
+            "dob": "Date of Birth",
+            "gender": "Gender",
+            "booking": "Confirmed booking",
+            "close": "Close"
+        }
     }
 }

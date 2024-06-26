@@ -51,7 +51,6 @@ class DoctorInfo extends Component {
         let { isShowDetailPrice, doctorInfor } = this.state;
         let price = doctorInfor && doctorInfor.priceData ? doctorInfor.priceData : "";
         let payment = doctorInfor && doctorInfor.paymentData ? doctorInfor.paymenteData : "";
-        console.log("Check infor :", this.props.doctorInfor);
         return (
             <Fragment>
                 {doctorInfor && doctorInfor.nameClinic && doctorInfor.addressClinic ?

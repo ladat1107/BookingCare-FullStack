@@ -19,10 +19,10 @@
         "dentalCheckup": "Khám nha khoa",
         "surgicalPackage": "Gói phẫu thuật",
         "diabetesCare": "Sống khỏe tiểu đường",
-        "specialty":"Chuyên khoa",
-        "media":"Truyền thông nói về BookingCare",
-        "forYou":"Dành cho bạn",
-        "doctor":"Bác sĩ"
+        "specialty": "Chuyên khoa",
+        "media": "Truyền thông nói về BookingCare",
+        "forYou": "Dành cho bạn",
+        "doctor": "Bác sĩ"
     },
     "common": {
         "add": "Thêm",
@@ -131,5 +131,18 @@
             "manage-schedule-doctor": "Quản lý lịch khám "
         }
     },
-    "home-user": {}
+    "home": {
+        "doctor": {
+            "firstName": "Họ",
+            "lastName": "Tên",
+            "phoneNumber": "Số điện thoại",
+            "email": "Email",
+            "address": "Địa chỉ",
+            "reason": "Lý do khám bệnh",
+            "dob": "Ngày sinh",
+            "gender": "Giới tính",
+            "booking": "Xác nhận",
+            "close": "Đóng"
+        }
+    }
 }

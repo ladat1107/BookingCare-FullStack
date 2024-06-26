@@ -7,8 +7,6 @@ import * as action from "../../../../store/actions";
 import "./DescriptionDoctor.scss";
 import { ToastContainer, toast } from 'react-toastify';
 import { LANGUAGE } from "../../../../utils/index"
-import ScheduleDoctor from "../../../../components/Doctor/ScheduleDoctor";
-import DoctorInfo from "../../../../components/Doctor/DoctorInfo";
 class DescriptionDoctor extends Component {
 
     constructor(props) {
@@ -32,12 +30,12 @@ class DescriptionDoctor extends Component {
         let language = this.props.language;
         let doctor = this.props.doctorParent;
         let markdown = doctor.Markdown;
+        console.log("check doctor", doctor)
         let nameVi, nameEn = "";
         if (doctor && doctor.positionData) {
             nameVi = doctor.positionData.valueVi + " " + doctor.lastName + " " + doctor.firstName;
             nameEn = doctor.positionData.valueEn + " " + doctor.firstName + " " + doctor.lastName;
         }
-
         return (
             <div className="container">
                 < Row className='select-description mt-3' >
@@ -53,15 +51,6 @@ class DescriptionDoctor extends Component {
                         <div dangerouslySetInnerHTML={{ __html: markdown && markdown.description ? markdown.description : "" }}></div>
                     </Col>
                 </Row >
-                <Row className='schedule-address-doctor'>
-                    <Col md={7} className='schedule-doctor-left'>
-                        <ScheduleDoctor doctorId={doctor && doctor.id ? doctor.id : null} />
-                    </Col>
-                    <Col md={5} className='address-doctor-right'>
-                        <DoctorInfo doctorInfor={doctor && doctor.Doctor_info ? doctor.Doctor_info : null} />
-                    </Col>
-
-                </Row>
             </div >
         )
     }
