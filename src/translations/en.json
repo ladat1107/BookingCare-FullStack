@@ -128,6 +128,10 @@
                 "createUserSuccess": "Create user successfully!",
                 "updateUserSuccess": "Update user successfully!",
                 "error": "An error occurred!"
+            },
+            "specialty": {
+                "image": "Upload image",
+                "title": "Hospital specialty management"
             }
         },
         "doctor": {

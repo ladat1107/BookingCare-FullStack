@@ -31,6 +31,10 @@ const getScheduleDoctorByDate = (doctorId, date) => {
 const createAppointmentDoctor = (data) => {
     return axios.post("/api/create-appointment-doctor", data);
 }
+const confirmBookingDoctorService = (data) => {
+    return axios.put("/api/confirm-schedule-doctor", data);
+}
+
 export {
     handleLogin,
     getAllUser,
@@ -42,5 +46,6 @@ export {
     getDoctorMarkdown,
     getScheduleDoctorByDate,
     createAppointmentDoctor,
+    confirmBookingDoctorService,
 
 };

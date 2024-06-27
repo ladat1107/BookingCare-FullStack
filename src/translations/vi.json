@@ -94,7 +94,8 @@
                 "warningMessage.selectDoctorAndDate": "Vui lòng chọn ngày và bác sĩ",
                 "warningMessage.selectSchedule": "Vui lòng chọn lịch khám",
                 "successMessage": "Thêm lịch thành công",
-                "errorMessage": "Đã xảy ra lỗi"
+                "errorMessage": "Đã xảy ra lỗi",
+                "warningMessage": "Vui lòng nhập đầy đủ thông tin"
             },
             "user-redux": {
                 "title": "Quản lý người dùng",
@@ -124,6 +125,10 @@
                 "createUserSuccess": "Tạo người dùng thành công!",
                 "updateUserSuccess": "Cập nhật người dùng thành công!",
                 "error": "Đã xảy ra lỗi!"
+            },
+            "specialty": {
+                "image": "Chọn ảnh chuyên khoa",
+                "title": "Quản lý chuyên khoa bệnh viện"
             }
         },
         "doctor": {

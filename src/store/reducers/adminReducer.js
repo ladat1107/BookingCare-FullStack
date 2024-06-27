@@ -10,6 +10,7 @@ const initialState = {
     payment: [],
     province: [],
     position: [],
+    specialty: [],
     isCreateUser: false,
     isUpdateUser: false,
     allUser: [],
@@ -18,6 +19,19 @@ const initialState = {
 
 const adminReducer = (state = initialState, action) => {
     switch (action.type) {
+        case actionTypes.GET_SPECIATLY_SYSTEM_START:
+            return {
+                ...state,
+            }
+        case actionTypes.GET_SPECIATLY_SYSTEM_SUCCESS:
+            state.specialty = action.data;
+            return {
+                ...state,
+            }
+        case actionTypes.GET_SPECIATLY_SYSTEM_FAILED:
+            return {
+                ...state,
+            }
         case actionTypes.GET_DATA_DOCTOR_ALLCODE_START:
             return {
                 ...state,

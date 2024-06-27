@@ -527,8 +527,7 @@ class DoctorManaga extends Component {
             toast.warn(<FormattedMessage id="system.admin.doctorInfor.warningMessage" />);
         } else {
             let response = await adminService.createDoctorPageInfor({
-                htmlContent, markDownContent, description, doctorId, clinicId: doctorId,
-                specialtyId: doctorId, note, addressClinic, nameClinic, paymentId: selectedPayment.value,
+                htmlContent, markDownContent, description, doctorId, note, addressClinic, nameClinic, paymentId: selectedPayment.value,
                 provinceId: selectedProvince.value, priceId: selectedPrice.value, action
             });
 

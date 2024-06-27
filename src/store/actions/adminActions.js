@@ -1,5 +1,30 @@
 import actionTypes from './actionTypes';
+import * as action from "../../services/adminService"
 import { getAllCodeByType, createUserService, getAllUser, deleteUserService, updateUserService } from "../../services/userService";
+
+export const getSpecialtySystemStart = () => {
+    return async (dispatch, getState) => {
+        try {
+            //dispatch({ type: actionTypes.GET_SPECIATLY_SYSTEM_START, })
+            let specialty = await action.handleGetSpecialtyManage();
+            if (specialty && specialty.errCode === 200) {
+                dispatch(getSpecialtySystemSuccess(specialty.data));
+            } else {
+                dispatch(getSpecialtySystemFailed());
+            }
+        } catch (e) {
+            dispatch(getSpecialtySystemFailed());
+            console.log(e);
+        }
+    }
+}
+export const getSpecialtySystemSuccess = (data) => ({
+    type: actionTypes.GET_SPECIATLY_SYSTEM_SUCCESS,
+    data: data,
+})
+export const getSpecialtySystemFailed = () => ({
+    type: actionTypes.GET_SPECIATLY_SYSTEM_FAILED,
+})
 
 export const getDoctorInfoAllCodeStart = () => {
     return async (dispatch, getState) => {

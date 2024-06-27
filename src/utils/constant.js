@@ -5,7 +5,8 @@ export const path = {
     SYSTEM: '/system',
     SYSTEM_DOCTOR: '/doctor',
     HOMEPAGE: '/home',
-    DOCTOR: '/home-doctor/:id'
+    DOCTOR: '/home-doctor/:id',
+    CONFORM_BOOKING: "/api/confirm-booking"
 };
 
 export const LANGUAGE = {

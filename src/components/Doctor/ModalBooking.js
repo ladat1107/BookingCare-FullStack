@@ -29,6 +29,7 @@ class ModalBooking extends Component {
             email: "",
             address: "",
             reason: "",
+            labelTime: "",
         }
 
     }
@@ -65,7 +66,7 @@ class ModalBooking extends Component {
     handleButtonCreate = async () => {
         let isEmpty = this.checkEmptyInput();
         if (isEmpty === true) {
-            let { dataBooking, firstName, phoneNumber, email, address, reason, lastName } = this.state;
+            let { dataBooking, firstName, phoneNumber, email, address, reason, lastName, labelTime } = this.state;
             let dataInput = ({
                 doctorId: dataBooking.timeData.doctorId,
                 timeType: dataBooking.timeData.timeType,
@@ -76,7 +77,12 @@ class ModalBooking extends Component {
                 email: email,
                 address: address,
                 reason: reason,
+                time: this.formatDate(dataBooking.timeData, this.props.language),
+                addressClinic: dataBooking.doctorData.Doctor_info.addressClinic,
+                nameClinic: dataBooking.doctorData.Doctor_infonameClinic,
+                doctorName: dataBooking.doctorData.firstName,
             });
+            console.log("check dataInput", dataInput)
             let respone = await createAppointmentDoctor(dataInput)
             if (respone && respone.errCode === 200) {
                 this.setState({
@@ -87,8 +93,9 @@ class ModalBooking extends Component {
                     email: "",
                     address: "",
                     reason: "",
+                    labelTime: "",
                 })
-                toast.success(<FormattedMessage id="system.admin.schedule-doctor.successMessage" />);
+                toast.success("Đặt lịch hẹn thành công\nVui lòng kiểm tra email của bạn!");
                 this.props.toggleFromParent();
             } else {
                 toast.error(respone.message)
@@ -97,7 +104,6 @@ class ModalBooking extends Component {
     }
     formatDate = (timeDate, language) => {
         let dateString = new Date(timeDate.date);
-        console.log("check time date: " + dateString.getDate())
         if (language === LANGUAGE.EN) {
             return `${timeDate.timeData.valueEn} - ${weekMap[dateString.getDay()].en} - ${dateString.getDate()}/${dateString.getMonth() + 1}/${dateString.getFullYear()}`;
         } else {
@@ -106,14 +112,13 @@ class ModalBooking extends Component {
     }
     render() {
         let language = this.props.language;
-        let { dataBooking, firstName, phoneNumber, email, address, reason, lastName } = this.state
+        let { dataBooking, firstName, phoneNumber, email, address, reason, lastName, labelTime } = this.state
         let doctor = dataBooking ? dataBooking.doctorData : {};
         let price = 0;
         if (doctor && doctor.Doctor_info && doctor.Doctor_info.priceData) {
             price = language === LANGUAGE.VI ? doctor.Doctor_info.priceData.valueVi + " VNĐ" : doctor.Doctor_info.priceData.valueEn + " $";
         }
         let timeData = dataBooking ? dataBooking.timeData : {};
-        let labelTime = "";
         if (timeData && timeData.date && timeData.timeData) {
             labelTime = this.formatDate(timeData, language);
         }
@@ -121,12 +126,14 @@ class ModalBooking extends Component {
         console.log("check labelTime", labelTime)
         return (
             <Modal
-                backdrop={true}
+
                 className='modal-booking-item'
                 isOpen={this.props.isOpen}
                 toggle={() => { this.toggle() }}
                 centered
                 size='lg'
+                backdrop="static"
+                keyboard={false}
             >
                 <div className='header-booking'>
                     <DescriptionDoctor doctorParent={doctor ? doctor : {}} />
