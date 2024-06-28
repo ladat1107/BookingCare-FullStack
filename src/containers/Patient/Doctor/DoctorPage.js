@@ -47,7 +47,7 @@ class DoctorPage extends Component {
                         <div className='container'>
                             <Row className='schedule-address-doctor'>
                                 <Col md={7} className='schedule-doctor-left'>
-                                    <ScheduleDoctor doctorParent={doctor ? doctor : null} />
+                                    <ScheduleDoctor doctorParent={doctor ? doctor : []} />
                                 </Col>
                                 <Col md={5} className='address-doctor-right'>
                                     <DoctorInfo doctorInfor={doctor && doctor.Doctor_info ? doctor.Doctor_info : null} />

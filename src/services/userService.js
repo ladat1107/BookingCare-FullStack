@@ -34,7 +34,9 @@ const createAppointmentDoctor = (data) => {
 const confirmBookingDoctorService = (data) => {
     return axios.put("/api/confirm-schedule-doctor", data);
 }
-
+const getSpecialtyDoctorByDate = (specialtyId) => {
+    return axios.get(`/api/get-specialty-doctor?specialtyId=${specialtyId}`);
+}
 export {
     handleLogin,
     getAllUser,
@@ -47,5 +49,5 @@ export {
     getScheduleDoctorByDate,
     createAppointmentDoctor,
     confirmBookingDoctorService,
-
+    getSpecialtyDoctorByDate,
 };

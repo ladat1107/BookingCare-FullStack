@@ -30,7 +30,7 @@ class DoctorInfo extends Component {
     componentDidMount() {
 
     }
-    componentDidUpdate(prevProps, prevState, nextProps) {
+    componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.doctorInfor != null && this.props.doctorInfor !== prevProps.doctorInfor) {
             this.setState({
                 doctorInfor: this.props.doctorInfor,

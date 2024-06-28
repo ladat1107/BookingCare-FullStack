@@ -30,7 +30,6 @@ class DescriptionDoctor extends Component {
         let language = this.props.language;
         let doctor = this.props.doctorParent;
         let markdown = doctor.Markdown;
-        console.log("check doctor", doctor)
         let nameVi, nameEn = "";
         if (doctor && doctor.positionData) {
             nameVi = doctor.positionData.valueVi + " " + doctor.lastName + " " + doctor.firstName;
@@ -48,7 +47,7 @@ class DescriptionDoctor extends Component {
                         <div className='title-description-doctor'>
                             {language === LANGUAGE.VI ? nameVi : nameEn}
                         </div>
-                        <div dangerouslySetInnerHTML={{ __html: markdown && markdown.description ? markdown.description : "" }}></div>
+                        <div className='description-line' dangerouslySetInnerHTML={{ __html: markdown && markdown.description ? markdown.description : "" }}></div>
                     </Col>
                 </Row >
             </div >
@@ -60,12 +59,13 @@ class DescriptionDoctor extends Component {
 const mapStateToProps = state => {
     return {
         language: state.app.language,
+
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        // getGender: () => dispatch(action.getGenderStart()),
+        
 
     };
 };

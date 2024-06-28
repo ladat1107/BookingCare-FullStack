@@ -42,7 +42,10 @@
         "forbiden-request": "Thông tin truyền vào không hợp lệ",
         "fail-to-load-all-code": "Không thể tải về dữ liệu allcode",
         "sum": "Tổng",
-        "date-range-invalid": "Khoảng thời gian không hợp lệ"
+        "date-range-invalid": "Khoảng thời gian không hợp lệ",
+        "showMore": "Xem thêm",
+        "showLess": "Ẩn bớt",
+        "showAll": "Xem tất cả"
     },
     "login": {
         "login": "Đăng nhập",
@@ -78,6 +81,8 @@
                 "selectedPrice": "Chọn giá",
                 "selectedPayment": "Chọn phương thức thanh toán",
                 "selectedProvince": "Chọn tỉnh/thành phố",
+                "selectedSpecialty": "Chọn chuyên khoa",
+                "selectedClinic": "Chọn phòng khám",
                 "btnSave": "Lưu",
                 "btnUpdate": "Cập nhật",
                 "clinicName": "Tên phòng khám",
@@ -128,7 +133,8 @@
             },
             "specialty": {
                 "image": "Chọn ảnh chuyên khoa",
-                "title": "Quản lý chuyên khoa bệnh viện"
+                "title": "Quản lý chuyên khoa bệnh viện",
+                "name": "Tên chuyên khoa"
             }
         },
         "doctor": {

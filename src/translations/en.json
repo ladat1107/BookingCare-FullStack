@@ -42,7 +42,10 @@
         "forbiden-request": "Invalid input data",
         "fail-to-load-all-code": "Fail to load data from allcode",
         "sum": "Sum",
-        "date-range-invalid": "Date range invalid"
+        "date-range-invalid": "Date range invalid",
+        "showMore": "Show more",
+        "showLess": "Show less",
+        "showAll": "Show all"
     },
     "login": {
         "login": "Login",
@@ -78,6 +81,8 @@
                 "selectedPrice": "Select Price",
                 "selectedPayment": "Select Payment",
                 "selectedProvince": "Select Province",
+                "selectedSpecialty": "Select Specialtiy",
+                "selectedClinic": "Select Clinic",
                 "btnSave": "Save",
                 "btnUpdate": "Update",
                 "clinicName": "Clinic Name",
@@ -131,7 +136,8 @@
             },
             "specialty": {
                 "image": "Upload image",
-                "title": "Hospital specialty management"
+                "title": "Hospital specialty management",
+                "name":"Specialtiy Name"
             }
         },
         "doctor": {

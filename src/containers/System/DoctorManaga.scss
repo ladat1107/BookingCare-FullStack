@@ -1,6 +1,22 @@
 .container {
 
     .managa-doc-content {
+        .btn-save {
+            background-color: orange;
+            color: white;
+            border-radius: 3px;
+            cursor: pointer;
+            text-align: center;
+            width: max-content;
+            padding: 5px 10px;
+
+            span {
+                padding: 15px 20px;
+                font-size: 15px;
+                font-weight: 600;
+            }
+        }
+
         .select-description {
 
             .select {}
@@ -23,12 +39,6 @@
 
         }
 
-        .btn-save {
-            padding: 1px 6px;
-            background-color: orange;
-            color: white;
-            border-radius: 3px;
-            cursor: pointer;
-        }
+
     }
 }

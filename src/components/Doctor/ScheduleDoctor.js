@@ -42,8 +42,9 @@ class ScheduleDoctor extends Component {
     }
     componentDidMount() {
         this.setArrDay();
+        this.setArrTime()
     }
-    componentDidUpdate(prevProps, prevState, nextProps) {
+    componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.language !== prevProps.language) {
             this.setArrDay();
         }
@@ -104,49 +105,52 @@ class ScheduleDoctor extends Component {
     }
     render() {
         let language = this.props.language;
-        let { arrDay, arrTime, dataBooking } = this.state;
+        let { arrDay, arrTime, dataBooking, doctor } = this.state;
+        
         return (
-            <div className="componment-schedule-doctor">
-                <Row className="selecte-time-doctor">
-                    <select class="form-select1"
-                        aria-label="Default select example"
-                        onChange={(event) => { this.handleOnSelected(event) }}>
-                        {arrDay && arrDay.length > 0 && arrDay.map((item, index) => {
-                            return (
-                                <option key={index}
-                                    value={item.value}>{item.label}
-                                </option>
-                            )
-                        })}
-                    </select>
+            <Fragment>
+                {doctor && _.isEmpty(doctor) ?
+                    <div className="componment-schedule-doctor">
+                        <Row className="selecte-time-doctor">
+                            <select class="form-select1"
+                                aria-label="Default select example"
+                                onChange={(event) => { this.handleOnSelected(event) }}>
+                                {arrDay && arrDay.length > 0 && arrDay.map((item, index) => {
+                                    return (
+                                        <option key={index}
+                                            value={item.value}>{item.label}
+                                        </option>
+                                    )
+                                })}
+                            </select>
 
-                </Row>
-                <Row >
-                    <div className="medical-schedule-text"><i className="fa-solid fa-calendar-days"></i>LỊCH KHÁM</div>
-                </Row >
-                <Row className="medical-examination-schedule">
+                        </Row>
+                        <Row >
+                            <div className="medical-schedule-text"><i className="fa-solid fa-calendar-days"></i>LỊCH KHÁM</div>
+                        </Row >
+                        <Row className="medical-examination-schedule">
 
-                    {arrTime && !_.isEmpty(arrTime) ?
-                        <Fragment>
-                            {arrTime.map((item, index) => {
-                                return (
-                                    <div className={item.selected === true ? 'btn-schedule active' : 'btn-schedule'} key={item.id}
-                                        onClick={() => { this.handleClickChoose(item) }}
-                                    >
-                                        {language === LANGUAGE.VI ? item.timeData.valueVi : item.timeData.valueEn}
-                                    </div>
-                                )
-                            })
-                            } <div className='medical-schedule-book'> <span>Chọn <i className="fa-solid fa-hand-point-up"></i> và đặt (Phí đặt lịch 0đ)</span></div>
-                        </Fragment> : <div>Không có lịch làm việc của y bác sĩ!</div>}
-                </Row>
-                <ModalBooking
-                    isOpen={this.state.isOpenModalBooking}
-                    toggleFromParent={this.toggle}
-                    dataBooking={dataBooking ? dataBooking : {}}
-                />
-
-            </div >
+                            {arrTime && !_.isEmpty(arrTime) ?
+                                <>
+                                    {arrTime.map((item, index) => {
+                                        return (
+                                            <div className={item.selected === true ? 'btn-schedule active' : 'btn-schedule'} key={item.id}
+                                                onClick={() => { this.handleClickChoose(item) }}
+                                            >
+                                                {language === LANGUAGE.VI ? item.timeData.valueVi : item.timeData.valueEn}
+                                            </div>
+                                        )
+                                    })
+                                    } <div className='medical-schedule-book'> <span>Chọn <i className="fa-solid fa-hand-point-up"></i> và đặt (Phí đặt lịch 0đ)</span></div>
+                                </> : <div>Không có lịch làm việc của y bác sĩ!</div>}
+                        </Row>
+                        <ModalBooking
+                            isOpen={this.state.isOpenModalBooking}
+                            toggleFromParent={this.toggle}
+                            dataBooking={dataBooking ? dataBooking : {}}
+                        />
+                    </div > : <Fragment></Fragment>}
+            </Fragment>
         )
     }
 

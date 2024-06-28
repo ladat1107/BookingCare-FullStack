@@ -199,8 +199,6 @@ class UserRedux extends Component {
             image: userUpdate.image,
             urlImage: imageBase64,
             action: CRUD_ACTION.UPDATE,
-        }, () => {
-            console.log("check update: ", this.state)
         })
 
     }

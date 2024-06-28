@@ -36,7 +36,7 @@ class ModalBooking extends Component {
     componentDidMount() {
 
     }
-    componentDidUpdate(prevProps, prevState, nextProps) {
+    componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.dataBooking !== prevProps.dataBooking && this.props.dataBooking) {
             this.setState({
                 dataBooking: this.props.dataBooking
@@ -113,6 +113,7 @@ class ModalBooking extends Component {
     render() {
         let language = this.props.language;
         let { dataBooking, firstName, phoneNumber, email, address, reason, lastName, labelTime } = this.state
+        console.log("check dataBooking", dataBooking);
         let doctor = dataBooking ? dataBooking.doctorData : {};
         let price = 0;
         if (doctor && doctor.Doctor_info && doctor.Doctor_info.priceData) {
@@ -122,11 +123,8 @@ class ModalBooking extends Component {
         if (timeData && timeData.date && timeData.timeData) {
             labelTime = this.formatDate(timeData, language);
         }
-        console.log("check dataBooking", dataBooking)
-        console.log("check labelTime", labelTime)
         return (
             <Modal
-
                 className='modal-booking-item'
                 isOpen={this.props.isOpen}
                 toggle={() => { this.toggle() }}

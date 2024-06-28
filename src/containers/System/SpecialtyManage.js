@@ -181,7 +181,7 @@ class SpecialtyManage extends Component {
                         <Col md={4}>
                             <FormGroup>
                                 <Label for="exampleEmail3">
-                                    <FormattedMessage id="system.admin.doctorInfor.clinicName" />
+                                    <FormattedMessage id="system.admin.specialty.name" />
                                 </Label>
                                 <Input
                                     id="exampleEmail3"
@@ -204,8 +204,7 @@ class SpecialtyManage extends Component {
                                     </Col>
                                     <Col md={3}>
                                         <Button className='btn-save mt-3' onClick={() => { this.handleDelete() }}>
-                                            {/* <FormattedMessage id="system.admin.doctorInfor.btnUpdate" /> */}
-                                            Delete
+                                            <FormattedMessage id="common.delete" />
                                         </Button>
                                     </Col>
                                 </Row>
@@ -213,7 +212,7 @@ class SpecialtyManage extends Component {
                         </Col>
                         <Col md={4}>
                             <label className='text'>
-                                <FormattedMessage id={"system.admin.doctorInfor.selectedDoctor"} />
+                                <FormattedMessage id={"system.admin.doctorInfor.selectedSpecialty"} />
                             </label>
                             <Select
                                 value={selectedOption}
