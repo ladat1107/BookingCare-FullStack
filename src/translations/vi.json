@@ -135,6 +135,12 @@
                 "image": "Chọn ảnh chuyên khoa",
                 "title": "Quản lý chuyên khoa bệnh viện",
                 "name": "Tên chuyên khoa"
+            },
+            "clinic": {
+                "image": "Chọn ảnh phòng khám",
+                "title": "Quản lý phòng khám",
+                "name": "Tên phòng khám",
+                "address": "Địa chỉ phòng khám"
             }
         },
         "doctor": {

@@ -29,6 +29,22 @@ const updateSpecialtyPage = (data) => {
 const deleteSpecialtyPage = (data) => {
     return axios.post(`/api/delete-page-specialty`, data);
 }
+
+const createClinicPage = (data) => {
+    return axios.post(`/api/create-page-clinic`, data);
+}
+const handleGetClinicManage = () => {
+    return axios.get(`/api/get-clinic-admin-manager`);
+}
+const handleGetClinicById = (clinicId) => {
+    return axios.get(`/api/get-one-clinic-admin-manager?clinicId=${clinicId}`);
+}
+const updateClinicPage = (data) => {
+    return axios.put(`/api/update-page-clinic`, data);
+}
+const deleteClinicPage = (data) => {
+    return axios.post(`/api/delete-page-clinic`, data);
+}
 export {
     getTopDoctor,
     createDoctorPageInfor,
@@ -39,4 +55,9 @@ export {
     handleGetSpecialtyById,
     updateSpecialtyPage,
     deleteSpecialtyPage,
+    createClinicPage,
+    handleGetClinicManage,
+    handleGetClinicById,
+    updateClinicPage,
+    deleteClinicPage,
 }

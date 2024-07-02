@@ -137,7 +137,13 @@
             "specialty": {
                 "image": "Upload image",
                 "title": "Hospital specialty management",
-                "name":"Specialtiy Name"
+                "name": "Specialtiy Name"
+            },
+            "clinic": {
+                "image": "Upload image",
+                "title": "Clinic management",
+                "name": "Clinic Name",
+                "address": "Clinic Address"
             }
         },
         "doctor": {

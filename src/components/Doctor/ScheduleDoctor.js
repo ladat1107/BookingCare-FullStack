@@ -106,13 +106,13 @@ class ScheduleDoctor extends Component {
     render() {
         let language = this.props.language;
         let { arrDay, arrTime, dataBooking, doctor } = this.state;
-        
+
         return (
             <Fragment>
-                {doctor && _.isEmpty(doctor) ?
+                {doctor ?
                     <div className="componment-schedule-doctor">
                         <Row className="selecte-time-doctor">
-                            <select class="form-select1"
+                            <select className="form-select1"
                                 aria-label="Default select example"
                                 onChange={(event) => { this.handleOnSelected(event) }}>
                                 {arrDay && arrDay.length > 0 && arrDay.map((item, index) => {

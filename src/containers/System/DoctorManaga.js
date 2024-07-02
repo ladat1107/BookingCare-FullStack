@@ -389,12 +389,14 @@ class DoctorManaga extends Component {
             allProvince: [],
             allPayment: [],
             allSpecialty: [],
+            allClinic: [],
 
             selectedOption: null,
             selectedPrice: null,
             selectedProvince: null,
             selectedPayment: null,
             selectedSpecialty: null,
+            selectedClinic: null,
             htmlContent: "",
             markDownContent: "",
             description: "",
@@ -412,6 +414,7 @@ class DoctorManaga extends Component {
         await this.getDoctorSelect();
         await this.props.getDoctorInfor();
         await this.props.getSpecialtySystem();
+        await this.props.getClinicSystem();
     }
 
     async getDoctorSelect() {
@@ -431,6 +434,21 @@ class DoctorManaga extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.clinicArr !== prevProps.clinicArr) {
+            let clinicArr = this.props.clinicArr;
+            let options = [];
+            if (clinicArr && clinicArr.length > 0) {
+                clinicArr.map((item) => {
+                    options.push({
+                        value: item.id,
+                        label: item.name
+                    })
+                });
+            }
+            this.setState({
+                allClinic: options,
+            });
+        }
         if (this.props.specialtyArr !== prevProps.specialtyArr) {
             let specialtyArr = this.props.specialtyArr;
             let options = [];
@@ -505,6 +523,10 @@ class DoctorManaga extends Component {
                         value: doctorInfor.specialtyData.id,
                         label: doctorInfor.specialtyData.name
                     } : this.state.allSpecialty[0],
+                    selectedClinic: doctorInfor.clinicData ? {
+                        value: doctorInfor.clinicData.id,
+                        label: doctorInfor.clinicData.name
+                    } : this.state.allClinic[0],
                     selectedPayment: {
                         value: doctorInfor.paymentId,
                         label: language === LANGUAGE.VI ? doctorInfor.paymentData.valueVi : doctorInfor.paymentData.valueEn
@@ -530,6 +552,7 @@ class DoctorManaga extends Component {
                     note: "",
                     nameClinic: "",
                     addressClinic: "",
+                    selectedClinic: null,
                     selectedPrice: null,
                     selectedProvince: null,
                     selectedPayment: null,
@@ -544,11 +567,11 @@ class DoctorManaga extends Component {
     handleSave = async () => {
         let {
             htmlContent, markDownContent, description, doctorId, action,
-            note, addressClinic, nameClinic, selectedPayment, selectedProvince, selectedPrice, selectedSpecialty
+            note, addressClinic, nameClinic, selectedPayment, selectedProvince, selectedPrice, selectedSpecialty, selectedClinic
         } = this.state;
 
         if (!htmlContent || !markDownContent || !description || !doctorId || !action ||
-            !note || !addressClinic || !nameClinic || !selectedPayment || !selectedPrice || !selectedProvince || !selectedSpecialty) {
+            !note || !addressClinic || !nameClinic || !selectedPayment || !selectedPrice || !selectedProvince || !selectedSpecialty || !selectedClinic) {
             toast.warn(<FormattedMessage id="system.admin.doctorInfor.warningMessage" />);
         } else {
             let response = await adminService.createDoctorPageInfor({
@@ -557,6 +580,7 @@ class DoctorManaga extends Component {
                 provinceId: selectedProvince.value,
                 priceId: selectedPrice.value,
                 specialtyId: selectedSpecialty.value,
+                clinicId: selectedClinic.value,
             });
 
             if (response && response.errCode === 201) {
@@ -568,8 +592,8 @@ class DoctorManaga extends Component {
 
                 this.setState({
                     description: "", htmlContent: "", markDownContent: "", doctorId, action: CRUD_ACTION.CREATE,
-                    selectedOption: null, selectedPrice: null, selectedProvince: null, selectedPayment: null, selectedSpecialty: null,
-                    action: "", note: "", nameClinic: "", addressClinic: "", specialtyId: "",
+                    selectedOption: null, selectedPrice: null, selectedProvince: null, selectedPayment: null, selectedSpecialty: null, selectedClinic: null,
+                    action: "", note: "", nameClinic: "", addressClinic: "", specialtyId: "", clinicId: "",
                 });
             } else {
                 toast.error(response.message);
@@ -591,8 +615,8 @@ class DoctorManaga extends Component {
 
     render() {
         let {
-            selectedOption, selectedPrice, selectedProvince, selectedPayment, selectedSpecialty,
-            allDoctor, allPrice, allProvince, allPayment, markDownContent, allSpecialty,
+            selectedOption, selectedPrice, selectedProvince, selectedPayment, selectedSpecialty, selectedClinic,
+            allDoctor, allPrice, allProvince, allPayment, markDownContent, allSpecialty, allClinic,
             description, action, note, addressClinic, nameClinic
         } = this.state;
 
@@ -638,10 +662,10 @@ class DoctorManaga extends Component {
                                 <FormattedMessage id="system.admin.doctorInfor.selectedClinic" />
                             </label>
                             <Select
-                                value={selectedPayment}
-                                onChange={(event) => { this.handleChangeSelection(event, "selectedPayment") }}
-                                options={allPayment.length > 0 ? allPayment : []}
-                                name={"selectedPayment"}
+                                value={selectedClinic}
+                                onChange={(event) => { this.handleChangeSelection(event, "selectedClinic") }}
+                                options={allClinic.length > 0 ? allClinic : []}
+                                name={"selectedClinic"}
                             />
                         </Col>
 
@@ -765,11 +789,13 @@ const mapStateToProps = state => ({
     arrPayment: state.admin.payment,
     arrProvince: state.admin.province,
     specialtyArr: state.admin.specialty,
+    clinicArr: state.admin.clinic,
 });
 
 const mapDispatchToProps = dispatch => ({
     getDoctorInfor: () => dispatch(action.getDoctorInfoAllCodeStart()),
     getSpecialtySystem: () => dispatch(action.getSpecialtySystemStart()),
+    getClinicSystem: () => dispatch(action.getClinicSystemStart()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DoctorManaga);

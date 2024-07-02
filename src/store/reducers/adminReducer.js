@@ -11,6 +11,7 @@ const initialState = {
     province: [],
     position: [],
     specialty: [],
+    clinic: [],
     isCreateUser: false,
     isUpdateUser: false,
     allUser: [],
@@ -19,6 +20,19 @@ const initialState = {
 
 const adminReducer = (state = initialState, action) => {
     switch (action.type) {
+        case actionTypes.GET_CLINIC_SYSTEM_START:
+            return {
+                ...state,
+            }
+        case actionTypes.GET_CLINIC_SYSTEM_SUCCESS:
+            state.clinic = action.data;
+            return {
+                ...state,
+            }
+        case actionTypes.GET_CLINIC_SYSTEM_FAILED:
+            return {
+                ...state,
+            }
         case actionTypes.GET_SPECIATLY_SYSTEM_START:
             return {
                 ...state,

@@ -11,6 +11,7 @@ import DoctorInfo from "../../../../components/Doctor/DoctorInfo";
 import { LANGUAGE } from '../../../../utils';
 import _ from 'lodash';
 import Select from 'react-select';
+import { withRouter } from 'react-router-dom';
 import { it } from 'date-fns/locale';
 // const listProvince = [
 //     { label: "Tất cả", value: 1 },
@@ -79,9 +80,11 @@ class ListDoctorSpecialty extends Component {
             selectedOption: selectedOption
         });
     };
+    handleClickDoctor = (item) => {
+        console.log("check item: ", item)
+        this.props.history.push(`/home-doctor/${item.User.id}`)
+    }
     render() {
-        //let { language, image, listDoctor } = this.props;
-        //let { selectedOption, listProvince, listDoctor } = this.state;
         let data = { ...this.state };
         // console.log("check state: ", data)
         return (
@@ -108,14 +111,18 @@ class ListDoctorSpecialty extends Component {
                                         }
                                         userWithImage.image = imageBase64;
                                         return (
-                                            <div className='item-list-doctor-specialty' key={index}>
+                                            <div className='item-list-doctor-specialty'
+                                                key={index}
+                                            >
 
-                                                <Col md={7} className='left-content-item'>
-                                                    <DescriptionDoctor doctorParent={userWithImage ? userWithImage : []} />
+                                                <Col md={7} className='left-content-item' onClick={() => { this.handleClickDoctor(item) }} >
+                                                    <DescriptionDoctor
+                                                        doctorParent={userWithImage ? userWithImage : []}
+                                                    />
                                                 </Col>
                                                 <Col md={5} className='right-content-item'>
                                                     <div className='right-content-item-up' >
-                                                        <ScheduleDoctor doctorParent={userWithImage ? userWithImage : []} />
+                                                        <ScheduleDoctor doctorParent={item.User ? item.User : []} />
                                                     </div>
                                                     <div className='right-content-item-down' >
                                                         <DoctorInfo doctorInfor={doctorInformations ? doctorInformations : null} />
@@ -153,4 +160,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListDoctorSpecialty);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ListDoctorSpecialty));

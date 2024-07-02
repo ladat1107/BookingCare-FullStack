@@ -2,6 +2,31 @@ import actionTypes from './actionTypes';
 import * as action from "../../services/adminService"
 import { getAllCodeByType, createUserService, getAllUser, deleteUserService, updateUserService } from "../../services/userService";
 
+export const getClinicSystemStart = () => {
+    return async (dispatch, getState) => {
+        try {
+            //dispatch({ type: actionTypes.GET_CLINIC_SYSTEM_START, })
+            let clinic = await action.handleGetClinicManage();
+            if (clinic && clinic.errCode === 200) {
+                dispatch(getClinicSystemSuccess(clinic.data));
+            } else {
+                dispatch(getClinicSystemFailed());
+            }
+        } catch (e) {
+            dispatch(getClinicSystemFailed());
+            console.log(e);
+        }
+    }
+}
+export const getClinicSystemSuccess = (data) => ({
+    type: actionTypes.GET_CLINIC_SYSTEM_SUCCESS,
+    data: data,
+})
+export const getClinicSystemFailed = () => ({
+    type: actionTypes.GET_CLINIC_SYSTEM_FAILED,
+})
+
+
 export const getSpecialtySystemStart = () => {
     return async (dispatch, getState) => {
         try {
