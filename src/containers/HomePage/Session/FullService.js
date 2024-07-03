@@ -31,41 +31,41 @@ class FullService extends Component {
                     <div className="service-body">
                         <div className='line'>
                             <div className='item'>
-                                <div className='icon'><i className="fa-regular fa-hospital fa-2xl"></i></div>
+                                <div className='icon'><i className="fa-regular fa-hospital fa-beat fa-2xl"></i></div>
                                 <div className='text'> <FormattedMessage id={"homepage-header.medicalSpecialties"} defaultMessage="Medical Specialties" /></div>
                             </div>
                             <div className='item'>
-                                <div className='icon'><i className="fa-solid fa-phone fa-2xl"></i></div>
+                                <div className='icon'><i className="fa-solid fa-phone fa-beat fa-2xl"></i></div>
                                 <div className='text'><FormattedMessage id={"homepage-header.remoteConsultation"} defaultMessage="Remote Consultation" /></div>
                             </div>
                         </div>
                         <div className='line'>
                             <div className='item'>
-                                <div className='icon'></div>
+                                <div className='icon'><i className="fa-solid fa-stethoscope fa-beat fa-2xl"></i></div>
                                 <div className='text'><FormattedMessage id={"homepage-header.generalCheckup"} defaultMessage="General Checkup" /></div>
                             </div>
                             <div className='item'>
-                                <div className='icon'></div>
+                                <div className='icon'><i className="fa-solid fa-flask-vial fa-beat fa-2xl"></i></div>
                                 <div className='text'><FormattedMessage id={"homepage-header.medicalTests"} defaultMessage="Medical Tests" /></div>
                             </div>
                         </div>
                         <div className='line'>
                             <div className='item'>
-                                <div className='icon'></div>
+                                <div className='icon'><i className="fa-solid fa-notes-medical fa-beat fa-2xl"></i></div>
                                 <div className='text'><FormattedMessage id={"homepage-header.mentalHealth"} defaultMessage="Mental Health" /></div>
                             </div>
                             <div className='item'>
-                                <div className='icon'></div>
+                                <div className='icon'><i className="fa-solid fa-tooth fa-beat fa-2xl"></i></div>
                                 <div className='text'><FormattedMessage id={"homepage-header.dentalCheckup"} defaultMessage="Dental Checkup" /></div>
                             </div>
                         </div>
                         <div className='line'>
                             <div className='item'>
-                                <div className='icon'></div>
+                                <div className='icon'><i className="fa-solid fa-box fa-beat fa-2xl"></i></div>
                                 <div className='text'><FormattedMessage id={"homepage-header.surgicalPackage"} defaultMessage="Surgical Package" /></div>
                             </div>
                             <div className='item'>
-                                <div className='icon'></div>
+                                <div className='icon'><i className="fa-solid fa-circle fa-beat fa-2xl"></i></div>
                                 <div className='text'><FormattedMessage id={"homepage-header.diabetesCare"} defaultMessage="Diabetes Care" /></div>
                             </div>
                         </div>
