@@ -34,7 +34,6 @@ class Specialty extends Component {
         }
     }
     handleClickSpecialty = (item) => {
-        console.log("check item: ", item)
         this.props.history.push(`/home-specialty/${item.id}`)
     }
     render() {

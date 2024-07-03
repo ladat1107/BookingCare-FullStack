@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import "./Facility.scss";
-
+import { withRouter } from 'react-router-dom';
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 import images from '../../../assets/headerHomePage/viet-duc.jpg';
-
+import * as action from '../../../store/actions/index';
 import ItemSlider from "../../../components/HomePage/ItemSlider";
 
 const properties = {
@@ -19,17 +19,28 @@ class Facility extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            allClinic: [],
+        }
+    }
+
+    componentDidMount() {
+        this.props.getAllClinicHome()
+    }
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.clinicArr !== prevProps.clinicArr && this.props.clinicArr) {
+            this.setState({
+                allClinic: this.props.clinicArr,
+            });
 
         }
     }
-    //slideImages = images.keys().map(images);
-
-
-    componentDidMount() {
+    handleClickClinic = (item) => {
+        console.log("check item: ", item)
+        this.props.history.push(`/home-clinic/${item.id}`)
     }
 
-
     render() {
+        let { allClinic } = this.state
         return (
             <div className="facility-container" >
                 <div className='facility-content'>
@@ -38,36 +49,28 @@ class Facility extends Component {
                         <div className='button'><FormattedMessage id="homepage-header.view_more" /></div>
                     </div>
                     <div className="down">
-                        <Slide
-                            slidesToScroll={2}
-                            slidesToShow={3}
-                            indicators={true}
-                            canSwipe={true}
-                            {...properties}
-                        >
-                            <ItemSlider
-                                image={images}
-                                text={"Bệnh viện Việt Đức"} />
-                            <ItemSlider
-                                image={images}
-                                text={"Bệnh viện Việt Đức"} />
-                            <ItemSlider
-                                image={images}
-                                text={"Bệnh viện Việt Đức"} />
-                            <ItemSlider
-                                image={images}
-                                text={"Bệnh viện Việt Đức"} />
-                            <ItemSlider
-                                image={images}
-                                text={"Bệnh viện Việt Đức"} />
-                            <ItemSlider
-                                image={images}
-                                text={"Bệnh viện Việt Đức"} />
+                        {allClinic && allClinic.length > 0 ?
+                            <Slide
+                                slidesToScroll={2}
+                                slidesToShow={3}
+                                indicators={true}
+                                //canSwipe={true}
+                                {...properties}
+                            >
+                                {allClinic.map((item, index) => {
+                                    return (
+                                        <div className='div-clinic-click' onClick={() => { this.handleClickClinic(item) }}
+                                            key={index}>
+                                            <ItemSlider
+                                                image={item.image}
+                                                text={item.name}
+                                            />
+                                        </div>
 
-
-                        </Slide>
-
-
+                                    )
+                                })
+                                }
+                            </Slide> : <></>}
                     </div>
                 </div>
             </div>
@@ -78,14 +81,14 @@ class Facility extends Component {
 
 const mapStateToProps = state => {
     return {
-
+        clinicArr: state.admin.clinic
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-
+        getAllClinicHome: () => dispatch(action.getClinicSystemStart()),
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Facility);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Facility));

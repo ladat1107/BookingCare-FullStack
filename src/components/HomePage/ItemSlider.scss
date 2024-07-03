@@ -26,5 +26,9 @@
         font-family: Montserrat;
         font-weight: 600;
         padding-top: 25px;
+        max-height: 50px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 }
