@@ -1,4 +1,4 @@
-# BookingCare Website Backend
+# BookingCare Website Front-end
 
 ## Introduction
 
@@ -34,7 +34,7 @@ Ensure you have the following installed on your system:
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/ladat1107/BookingCare_BackEndNodejs.git
+    git clone https://github.com/ladat1107/BookingCare_FrontEndReactjs.git
     ```
 
 2. Navigate to the project directory:
@@ -48,7 +48,7 @@ Ensure you have the following installed on your system:
     ```
 
 4. Configure the environment variables:
-    Create a `.env` file in the root directory and add your password MySql, email, password and any other necessary environment variables.
+    Create a `.env` file in the root directory and add your path to Backend Server and any other necessary environment variables.
 
 5. Start the application:
     ```bash
