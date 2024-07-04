@@ -3,20 +3,22 @@ import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import { ConnectedRouter as Router } from 'connected-react-router';
 import { history } from '../redux'
-import { ToastContainer } from 'react-toastify';
-
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { userIsAuthenticated, userIsNotAuthenticated } from '../hoc/authentication';
-
-import { path } from '../utils'
-
+import { languages, path } from '../utils'
 import Home from '../routes/Home';
 import Login from './Auth/Login';
 import Header from './Header/Header';
 import System from '../routes/System';
-
+import DoctorPage from "../containers/Patient/Doctor/DoctorPage";
+import Doctor from "../routes/Doctor";
+import SpecialtyPage from "../containers/Patient/Specialty/SpecialtyPage"
 import { CustomToastCloseButton } from '../components/CustomToast';
+import CustomScrollbar from "../components/CustomScrollbars";
 import ConfirmModal from '../components/ConfirmModal';
+import HomePage from '../containers/HomePage/HomePage';
+import ConformBooking from './Patient/ConformBooking';
 
 class App extends Component {
 
@@ -42,25 +44,25 @@ class App extends Component {
         return (
             <Fragment>
                 <Router history={history}>
-                    <div className="main-container">
-                        <ConfirmModal />
-                        {this.props.isLoggedIn && <Header />}
+                    <CustomScrollbar >
+                        <div className="main-container ">
+                            <ConfirmModal />
+                            <div className="content-container wrapper">
+                                <Switch>
+                                    <Route path={path.HOME} exact component={(Home)} />
+                                    <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} />
+                                    <Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
+                                    <Route path={path.SYSTEM_DOCTOR} component={userIsAuthenticated(Doctor)} />
+                                    <Route path={path.HOMEPAGE} component={(HomePage)} />
+                                    <Route path={path.DOCTOR} component={(DoctorPage)} />
+                                    <Route path={path.SPECIALTY} component={(SpecialtyPage)} />
+                                    <Route path={path.CONFORM_BOOKING} component={(ConformBooking)} />
+                                </Switch>
+                            </div>
 
-                        <span className="content-container">
-                            <Switch>
-                                <Route path={path.HOME} exact component={(Home)} />
-                                <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} />
-                                <Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
-                            </Switch>
-                        </span>
-
-                        <ToastContainer
-                            className="toast-container" toastClassName="toast-item" bodyClassName="toast-item-body"
-                            autoClose={false} hideProgressBar={true} pauseOnHover={false}
-                            pauseOnFocusLoss={true} closeOnClick={false} draggable={false}
-                            closeButton={<CustomToastCloseButton />}
-                        />
-                    </div>
+                            <ToastContainer autoClose={3000} />
+                        </div>
+                    </CustomScrollbar>
                 </Router>
             </Fragment>
         )
@@ -70,7 +72,8 @@ class App extends Component {
 const mapStateToProps = state => {
     return {
         started: state.app.started,
-        isLoggedIn: state.user.isLoggedIn
+        isLoggedIn: state.user.isLoggedIn,
+        language: state.app.language,
     };
 };
 

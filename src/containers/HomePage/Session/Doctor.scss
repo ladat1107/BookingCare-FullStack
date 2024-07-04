@@ -1,0 +1,94 @@
+.doctor-container {
+    width: 100vw !important;
+    margin-top: 50px;
+    background-image: url('../../../assets/headerHomePage/back-ground-media.png');
+    background-size: cover;
+    /* hoặc contain */
+    background-repeat: no-repeat;
+    background-position: center center;
+
+
+    .doctor-content {
+
+        width: 100%;
+        padding: 0 140px;
+
+        .up {
+
+            height: 20%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 30px 10px;
+
+            .text {
+                font-size: 24px;
+                font-family: Montserrat;
+                font-weight: 700;
+            }
+
+            .button {
+                border-radius: 20px;
+                font-size: 20px;
+                font-family: Montserrat;
+                font-weight: 600;
+                color: #34929E;
+                background-color: #DAF3F6;
+                padding: 10px 15px;
+                cursor: pointer;
+            }
+        }
+
+        .down {
+
+            width: 100%;
+
+            .react-slideshow-wrapper.slide {
+                margin-left: 20px;
+            }
+
+            .item {
+
+                width: min-content;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                padding: 10px 30px;
+
+                .image {
+                    height: 220px;
+                    aspect-ratio: 1 / 1;
+                    background-image: url("../../../assets/headerHomePage/csyt.png");
+                    border-radius: 180px;
+                    display: inline-block;
+                    margin: 0 auto;
+                    background-size: cover;
+                    /* Hình ảnh sẽ được căn chỉnh để fit với kích thước của div */
+                    background-position: center;
+                    /* Hình ảnh sẽ được căn giữa theo chiều ngang và dọc */
+                    background-repeat: no-repeat;
+                    cursor: pointer;
+                }
+
+                .text-up {
+                    width: 120%;
+                    font-size: 18px;
+                    font-family: Montserrat;
+                    font-weight: 600;
+                    padding-top: 15px;
+                    cursor: pointer;
+                }
+
+                .text-down {
+                    width: 100%;
+                    font-size: 18px;
+                    font-family: Montserrat;
+                    font-weight: 500;
+                    padding-top: 15px;
+                }
+            }
+        }
+    }
+}

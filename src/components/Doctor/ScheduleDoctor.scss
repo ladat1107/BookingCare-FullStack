@@ -1,0 +1,62 @@
+.componment-schedule-doctor {
+    .selecte-time-doctor {
+        width: max-content;
+
+        .form-select1 {
+            color: #337ab7;
+            font-size: 15px;
+            font-weight: 600;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-bottom: 1.5px solid black;
+            outline: none;
+        }
+
+    }
+
+    .medical-schedule-text {
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        gap: 15px;
+        font-weight: 600;
+    }
+
+    .medical-examination-schedule {
+        margin-top: 15px;
+        display: flex;
+        align-items: start;
+        justify-content: left;
+        //text-align: center;
+        gap: 10px;
+        margin-bottom: 15px;
+
+        .btn-schedule {
+            border-radius: 3px;
+            text-align: center;
+            background-color: #f5f0f0;
+            font-weight: 600;
+            font-size: 13px;
+            padding: 10px 10px;
+            width: 156px;
+            cursor: pointer;
+        }
+
+        .btn-schedule:hover {
+            border-radius: 3px;
+            border: 1px solid #8dade1;
+            background-color: #a9cef0;
+        }
+
+        .medical-schedule-book {
+            margin-bottom: 15px;
+            font-size: 12px;
+
+        }
+
+    }
+
+
+}

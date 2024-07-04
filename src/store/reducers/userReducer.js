@@ -2,10 +2,12 @@ import actionTypes from '../actions/actionTypes';
 
 const initialState = {
     isLoggedIn: false,
-    userInfo: null
+    isLoadDoctor: false,
+    userInfo: null,
+    topDoctor: [],
 }
 
-const appReducer = (state = initialState, action) => {
+const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.USER_LOGIN_SUCCESS:
             return {
@@ -25,9 +27,24 @@ const appReducer = (state = initialState, action) => {
                 isLoggedIn: false,
                 userInfo: null
             }
+        case actionTypes.GET_TOP_DOCTOR_START:
+            return {
+                ...state,
+            }
+        case actionTypes.GET_TOP_DOCTOR_SUCCESS:
+            state.topDoctor = action.data;
+            state.isLoadDoctor = true;
+            return {
+                ...state,
+            }
+        case actionTypes.GET_TOP_DOCTOR_FAILED:
+            state.isLoadDoctor = false
+            return {
+                ...state,
+            }
         default:
             return state;
     }
 }
 
-export default appReducer;
+export default userReducer;

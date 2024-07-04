@@ -1,0 +1,62 @@
+.modal-booking-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; // Chỉnh sửa để các phần tử con xếp dọc
+    padding: 20px;
+
+    .header-booking {}
+
+    .body-booking {
+        margin-top: 10px;
+        border: 1px solid gainsboro;
+        padding: 10px 20px 70px 20px;
+
+        .row-first {
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            padding: 10px 0;
+            text-transform: uppercase;
+            color: #666666;
+            font-size: 13px;
+            font-weight: 600;
+
+            .price-booking-of-doctor {
+                span {
+                    font-size: 13px;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    color: rgba(72, 196, 211, 1.00);
+                }
+            }
+
+            .time-booking-of-doctor {}
+        }
+    }
+
+    .footer-booking {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        padding: 10px 20px;
+
+        .btn-footer-book {
+            border-radius: 3px;
+            padding: 5px 10px;
+            width: max-content;
+            cursor: pointer;
+            background-color: orange;
+            color: white;
+        }
+
+        .btn-footer-close {
+            border-radius: 3px;
+            padding: 5px 10px;
+            width: max-content;
+            cursor: pointer;
+            background-color: rgb(192, 184, 184);
+        }
+
+    }
+}

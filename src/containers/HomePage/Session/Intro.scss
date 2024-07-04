@@ -1,0 +1,45 @@
+.intro-container {
+    height: 461px;
+    position: relative;
+    padding-top: 25px;
+
+    .back-ground-behind {
+        position: absolute;
+        background-color: #EDFFFA;
+        height: 70%;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+
+    .slide-container {
+        position: absolute;
+        height: 90%;
+        width: 80%;
+        left: 50%;
+        transform: translateX(-50%);
+
+
+        .each-slide {
+            height: 100%;
+
+            div {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-size: cover;
+                /* Hình ảnh sẽ được căn chỉnh để fit với kích thước của div */
+                background-position: center;
+                /* Hình ảnh sẽ được căn giữa theo chiều ngang và dọc */
+                background-repeat: no-repeat;
+                /* Ngăn hình ảnh lặp lại */
+                height: 400px;
+                border-radius: 20px;
+
+            }
+        }
+
+    }
+
+
+}

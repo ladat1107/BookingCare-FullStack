@@ -1,4 +1,29 @@
 {
+    "homepage-header": {
+        "all": "All",
+        "house": "Home",
+        "hospital": "Hospital",
+        "healthy": "Health care",
+        "search": "Search a doctor",
+        "schedule": "Shedule",
+        "support": "Support",
+        "fullService": "Full Service",
+        "highlighted_doctors": "Highlighted Doctors",
+        "view_more": "View More",
+        "medical_facility": "Medical Facility",
+        "medicalSpecialties": "Medical Specialties",
+        "remoteConsultation": "Remote Consultation",
+        "generalCheckup": "General Checkup",
+        "medicalTests": "Medical Tests",
+        "mentalHealth": "Mental Health",
+        "dentalCheckup": "Dental Checkup",
+        "surgicalPackage": "Surgical Package",
+        "diabetesCare": "Diabetes Care",
+        "specialty": "Specialty",
+        "media": "Media talks about BookingCare",
+        "forYou": "Your servive",
+        "doctor": "Doctor"
+    },
     "common": {
         "add": "Add",
         "edit": "Edit",
@@ -17,7 +42,10 @@
         "forbiden-request": "Invalid input data",
         "fail-to-load-all-code": "Fail to load data from allcode",
         "sum": "Sum",
-        "date-range-invalid": "Date range invalid"
+        "date-range-invalid": "Date range invalid",
+        "showMore": "Show more",
+        "showLess": "Show less",
+        "showAll": "Show all"
     },
     "login": {
         "login": "Login",
@@ -26,95 +54,115 @@
         "userpass-wrong": "Invalid username or password!"
     },
     "menu": {
-        "system": {
-            "header": "System",
-            "system-administrator": {
-                "header": "System Administrator",
-                "user-manage": "User manage",
-                "product-manage": "Package manage",
-                "register-package-group-or-account": "Register service package for group/account"
-            },
-            "system-parameter": {
-                "header": "System-parameter"
-            }
+        "admin": {
+            "manage": "Manage",
+            "crud-user": "User Manage",
+            "crud-user-redux": "User Manage redux",
+            "doctor": "Doctor manage",
+            "manage-schedule-doctor": "Manage medical examination schedule",
+            "clinic": "Clinic",
+            "clinic-manage": "Clinic manage",
+            "specialty": "Specialty",
+            "specialty-manage": "Specialty manage",
+            "handbook": "Handbook",
+            "handbook-manage": "Handbook manage"
+        },
+        "doctor": {
+            "manage": "Manage",
+            "manage-schedule-doctor": "Manage medical examination schedule"
         }
     },
     "system": {
-        "user-manage": {
-            "fail-to-load-fouser": "Fail to load system users list",
-            "user-id": "User ID",
-            "usertype": "User type",
-            "username": "Username",
-            "fullname": "Fullname",
-            "mobile": "Phone",
+        "admin": {
+            "doctorInfor": {
+                "title": "Doctor Information Management",
+                "selectedDoctor": "Select Doctor",
+                "descrition": "Description",
+                "selectedPrice": "Select Price",
+                "selectedPayment": "Select Payment",
+                "selectedProvince": "Select Province",
+                "selectedSpecialty": "Select Specialtiy",
+                "selectedClinic": "Select Clinic",
+                "btnSave": "Save",
+                "btnUpdate": "Update",
+                "clinicName": "Clinic Name",
+                "clinicAddress": "Clinic Address",
+                "note": "Note",
+                "warningMessage": "Please enter all required information"
+            },
+            "schedule-doctor": {
+                "selectedDoctor": "Select Doctor",
+                "selectedDate": "Select Date",
+                "selectedTime": "Select Time",
+                "btnSave": "Save",
+                "btnUpdate": "Update",
+                "warningMessage": "Please enter all required information",
+                "title": "Doctor Schedule Management",
+                "selectDoctor": "Select doctor",
+                "selectDate": "Select date",
+                "warningMessage.selectDoctorAndDate": "Please select a doctor and a date",
+                "warningMessage.selectSchedule": "Please select a schedule",
+                "successMessage": "Schedule added successfully",
+                "errorMessage": "An error occurred"
+            },
+            "user-redux": {
+                "title": "Manage users redux",
+                "email": "Email",
+                "password": "Password",
+                "firstName": "First Name",
+                "lastName": "Last Name",
+                "address": "Address",
+                "phoneNumber": "Phone Number",
+                "gender": "Gender",
+                "role": "Role",
+                "position": "Position",
+                "file": "File",
+                "uploadImage": "Upload Image",
+                "checkMeOut": "Check me out",
+                "createUser": "Create User",
+                "updateUser": "Update User",
+                "emailMustNotEmpty": "Email mustn't be empty!",
+                "passwordMustNotEmpty": "Password mustn't be empty!",
+                "firstNameMustNotEmpty": "First Name mustn't be empty!",
+                "lastNameMustNotEmpty": "Last Name mustn't be empty!",
+                "addressMustNotEmpty": "Address mustn't be empty!",
+                "phoneNumberMustNotEmpty": "Phone Number mustn't be empty!",
+                "manageUsersRedux": "Manage users redux",
+                "action": "Action",
+                "deleteUserSuccess": "Delete user successfully!",
+                "createUserSuccess": "Create user successfully!",
+                "updateUserSuccess": "Update user successfully!",
+                "error": "An error occurred!"
+            },
+            "specialty": {
+                "image": "Upload image",
+                "title": "Hospital specialty management",
+                "name": "Specialtiy Name"
+            },
+            "clinic": {
+                "image": "Upload image",
+                "title": "Clinic management",
+                "name": "Clinic Name",
+                "address": "Clinic Address"
+            }
+        },
+        "doctor": {
+            "manage": "Quản lý",
+            "manage-schedule-doctor": "Quản lý lịch khám "
+        }
+    },
+    "home": {
+        "doctor": {
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "phoneNumber": "Phone Number",
             "email": "Email",
-            "status": "Status",
-            "add-user": "Add user",
-            "edit-user": "Edit user information",
-            "password": "Password",
-            "retype-password": "Retype password",
-            "add-user-success": "Add user successfully",
-            "edit-user-success": "Change user information successfully",
-            "add-user-fail": "Fail to add user",
-            "edit-user-fail": "Fail to change user information",
-            "del-user-success": "Delete user successfully",
-            "del-user-fail": "Fail to delete user",
-            "invalid-input": {
-                "username": "Please fill in username",
-                "fullname": "Please fill in fullname",
-                "password": "Please fill in password"
-            },
-            "sure-delete-user": "Are you sure to delete this user?"
-        },
-        "product-manage": {
-            "fail-to-load-foprtype": "Fail to load packages list",
-            "prid": "Package ID",
-            "prname": "Package name",
-            "prtype": "Package type",
-            "status": "Status",
-            "description": "Description",
-            "effective-date": "Effective date",
-            "expiration-date": "Expiration date",
-            "add-product": "Add package",
-            "add-product-success": "Add package successfully",
-            "add-product-fail": "Fail to add package",
-            "edit-product": "Edit package information",
-            "package-decentralize": "Package decentralize",
-            "edit-product-success": "Edit package information successfully",
-            "edit-product-fail": "Fail to edit package information",
-            "delete-product-success": "Delete package successfully",
-            "delete-product-fail": "Fail to delete package",
-            "invalid-input": {
-                "prid": "Please fill in package ID",
-                "prname": "Please fill in package name"
-            },
-            "fail-to-load-decentralize-info": "Fail to load decentralize info",
-            "save-decentralize-success": "Save decentralization successfully",
-            "save-decentralize-fail": "Fail to save decentralization",
-            "sure-delete-package": "Are you sure to delete this package?"
-        },
-        "register-package-group-or-acc": {
-            "assign-service-package-to-customer": "Assign service package to customer",
-            "package-name": "Package name",
-            "assign-type": "Assign type",
-            "cust-acc-group": "Customer/account group",
-            "effective-date": "Effective date",
-            "expiration-date": "Expiration date",
-            "assign": "Assign",
-            "manage-assign-groups": "Manage assign groups",
-            "group-cust-acc-name": "Group/customer account name",
-            "del-assign": "Del assign",
-            "fail-to-load-manage-assign-groups-list": "Fail to load manage assign groups list",
-            "invalid-selected": {
-                "currentfoProduct": "Invalid package",
-                "currentAssignType": "Invalid assign type",
-                "currentFoUser": "Invalid customer/account group"
-            },
-            "assign-service-package-to-customer-success": "Assign service package to customer successfully",
-            "assign-service-package-to-customer-fail": "Fail to assign service package to customer",
-            "remove-assign-success": "Unassign service package to customer successfully",
-            "remove-assign-fail": "Fail to unassign service package to customer",
-            "sure-delete-assign": "Are you sure to unassign service package to customer?"
+            "address": "Address",
+            "reason": "Reason",
+            "dob": "Date of Birth",
+            "gender": "Gender",
+            "booking": "Confirmed booking",
+            "close": "Close"
         }
     }
 }

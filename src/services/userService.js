@@ -16,10 +16,38 @@ const deleteUserService = (userId) => {
 const updateUserService = (user) => {
     return axios.put("/api/update-user", user);
 }
+const getAllCodeByType = (type) => {
+    return axios.get(`/api/get-all-code?type=${type}`);
+}
+const getTopDoctor = (limit) => {
+    return axios.get(`/api/get-top-doctor?limit=${limit}`);
+}
+const getDoctorMarkdown = (doctorid) => {
+    return axios.get(`/api/get-doctor-mardown?doctorId=${doctorid}`);
+}
+const getScheduleDoctorByDate = (doctorId, date) => {
+    return axios.get(`/api/get-schedule-doctor?doctorId=${doctorId}&date=${date}`);
+}
+const createAppointmentDoctor = (data) => {
+    return axios.post("/api/create-appointment-doctor", data);
+}
+const confirmBookingDoctorService = (data) => {
+    return axios.put("/api/confirm-schedule-doctor", data);
+}
+const getSpecialtyDoctorByDate = (specialtyId) => {
+    return axios.get(`/api/get-specialty-doctor?specialtyId=${specialtyId}`);
+}
 export {
     handleLogin,
     getAllUser,
     createUserService,
     deleteUserService,
     updateUserService,
+    getAllCodeByType,
+    getTopDoctor,
+    getDoctorMarkdown,
+    getScheduleDoctorByDate,
+    createAppointmentDoctor,
+    confirmBookingDoctorService,
+    getSpecialtyDoctorByDate,
 };

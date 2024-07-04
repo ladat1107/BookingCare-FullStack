@@ -1,0 +1,94 @@
+.facility-container {
+    height: 450px;
+    width: 100%;
+    margin-top: 50px;
+
+    .facility-content {
+        height: 100%;
+        width: 100%;
+        padding: 0 140px;
+
+        .up {
+            height: 20%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+
+
+            .text {
+                font-size: 24px;
+                font-family: Montserrat;
+                font-weight: 700;
+            }
+
+            .button {
+                border-radius: 20px;
+                font-size: 20px;
+                font-family: Montserrat;
+                font-weight: 600;
+                color: #34929E;
+                background-color: #DAF3F6;
+                padding: 10px 15px;
+            }
+        }
+
+        .down {
+            height: 80%;
+            padding: 20px 0;
+
+            .div-clinic-click {
+                padding-right: 20px;
+            }
+
+            .react-slideshow-wrapper.slide {
+                margin-left: 20px;
+            }
+
+            // .item {
+            //     border-radius: 15px;
+            //     border: 1px solid rgb(230, 225, 225);
+            //     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+            //     margin-right: 20px;
+            //     text-align: center;
+            //     cursor: pointer;
+            //     padding: 10px;
+
+            //     .image {
+            //         width: 330px;
+            //         height: 215px;
+            //         display: inline-block;
+            //         margin: 0 auto;
+            //         background-size: cover;
+            //         /* Hình ảnh sẽ được căn chỉnh để fit với kích thước của div */
+            //         background-position: center;
+            //         /* Hình ảnh sẽ được căn giữa theo chiều ngang và dọc */
+            //         background-repeat: no-repeat;
+            //     }
+
+            //     .text {
+            //         font-size: 18.5px;
+            //         font-family: Montserrat;
+            //         font-weight: 600;
+            //         padding-top: 25px;
+            //     }
+            // }
+        }
+    }
+}
+
+.custom {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1.5px solid #B5E7ED;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .icon {
+        color: #34929E;
+        font-size: 20px;
+    }
+}

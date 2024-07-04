@@ -1,0 +1,67 @@
+.specialty-description-contaniner {
+    position: relative;
+
+    .background-image-spe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        //filter: blur(30px); làm mờ nhiễu, mất nét
+        opacity: 0.09999;
+        z-index: 0;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    .descrition-content-specialty {
+        padding: 15px 150px;
+        z-index: 1;
+        position: relative;
+
+        .less {
+            max-height: 220px;
+            /* Chiều cao tối đa ban đầu của nội dung */
+            overflow: hidden;
+            /* Ẩn nội dung khi vượt quá max-height */
+            transition: max-height 0.5s ease;
+        }
+
+        h1 {
+            margin: 12px 0;
+            font-size: 20px;
+            font-weight: 600;
+            font-style: bold;
+
+        }
+
+        h2 {
+            margin: 12px 0;
+            font-size: 14px;
+            font-weight: 600;
+
+        }
+
+        p {
+            font-size: 14px;
+        }
+
+        ul {
+            font-size: 14px;
+        }
+
+        .button-show-more {
+            color: rgb(100, 225, 237);
+            font-size: 15px;
+
+            span {
+                cursor: pointer;
+            }
+        }
+    }
+
+    .more {
+        max-height: none;
+    }
+}
